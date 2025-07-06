@@ -37,7 +37,7 @@
     }
     
     .subtitle {
-        color: #7AB2D3;
+        color: #4A628A;
         font-size: 1.1em;
     }
     
@@ -58,7 +58,6 @@
         font-size: 3em;
         background: rgba(223, 242, 235, 0.3);
         padding: 30px;
-        border-radius: 8px;
         min-height: 120px;
         display: flex;
         align-items: center;
@@ -92,10 +91,8 @@
     }
     
     .incomplete-char {
-        background: rgba(185, 229, 232, 0.5);
+        background: rgba(223, 242, 235, 0.3);
         color: #4A628A;
-        border-radius: 4px;
-        border: 2px dashed #7AB2D3;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -105,7 +102,6 @@
     
     .complete-char {
         color: #4A628A;
-        font-weight: bold;
     }
     
     .space {
@@ -159,17 +155,19 @@
     }
     
     .hint-title {
-        font-size: 0.9em;
+        font-size: 1.1em;
         color: #4A628A;
         font-weight: bold;
         margin-bottom: 5px;
-    }
+    display:inline;
+}
     
     .hint-text {
         font-size: 1.1em;
         color: #4A628A;
         font-weight: bold;
-    }
+    display:inline;
+}
     
     .consonant-section {
         background: rgba(255, 255, 255, 0.9);
@@ -238,7 +236,7 @@
     }
     
     .stats {
-        font-size: 0.9em;
+        font-size: 1.3em;
         color: #4A628A;
     }
     
@@ -259,13 +257,7 @@
         box-shadow: 0 5px 15px rgba(74, 98, 138, 0.3);
     }
     
-    .game-description {
-        text-align: center;
-        font-size: 0.9em;
-        color: #7AB2D3;
-        margin-top: 20px;
-    }
-
+    
     @media (max-width: 600px) {
         .title {
             font-size: 1.8em;
@@ -284,7 +276,7 @@
         .consonant-btn {
             width: 100%;
             height: 50px;
-            font-size: 1em;
+            font-size: 1.0em;
         }
 
         .new-game-btn {
@@ -317,7 +309,7 @@
 
     <div class="game-board">
         <div class="hint-section">
-            <div class="hint-title">💡 힌트</div>
+            <div class="hint-title">💡 </div>
             <div class="hint-text" id="hintText">게임을 시작하세요!</div>
         </div>
         
@@ -352,11 +344,10 @@
             맞춘 자음: 0개 | 틀린 자음: 0개
         </div>
         <button class="new-game-btn" onclick="startNewGame()">새 게임</button>
-    </div>
+    <button class="new-game-btn" onclick="location.href='index.html'" class="game-button">초기 화면</button>
+</div>
 
-    <div class="game-description">
-        <p>💡 모든 모음은 처음부터 공개됩니다. 자음을 맞춰서 완전한 글자를 완성하세요!</p>
-    </div>
+    
 </div>
 
 <script>
