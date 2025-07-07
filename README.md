@@ -30,9 +30,9 @@
   Inspired by Wheel of Fortune and Initial Consonant Quiz, I decided to create a new game.
 
 - **2025-06-18 pm 07:00**  
-  첫 번째 프로토타입 완성 후 [`/moeum-quiz`](https://github.com/soosoohan/moeum-quiz) 레포에 업로드.  실질적인 초기 완성 단계.
+  첫 번째 프로토타입 완성 후 [`/moeum-quiz`](https://soosoohan.github.io/moeum-quiz) 레포에 업로드.  실질적인 초기 완성 단계.
 
-  First prototype completed and uploaded to the [`/moeum-quiz`](https://github.com/soosoohan/moeum-quiz) repository.
+  First prototype completed and uploaded to the [`/moeum-quiz`](https://soosoohan.github.io/moeum-quiz) repository.
 
 - **2025-07-05**  
   청록색 계열의 테마로 디자인을 전면 리뉴얼하고 같은 레포에 덮어씀.  
@@ -42,9 +42,9 @@
   However, layout issues appeared on mobile devices.
 
 - **2025-07-05**  
-  반응형 버전을 복구하기 위해 새로운 레포 [`/mong`](https://github.com/soosoohan/mong) 생성 후 6월 18일 버전을 개선해서 업로드.
+  반응형 버전을 복구하기 위해 새로운 레포 [`/mong`](https://soosoohan.github.io/mong) 생성 후 6월 18일 버전을 개선해서 업로드.
 
-  Created a new repo [`/mong`](https://github.com/soosoohan/mong) to restore Improved and uploaded the June 18 version.
+  Created a new repo [`/mong`](https://soosoohan.github.io/mong) to restore Improved and uploaded the June 18 version.
 
 ---
 
