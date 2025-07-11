@@ -1,59 +1,65 @@
-🟡 모음퀴즈 (Moeum Quiz)
 
-- 모음이 공개된 상태에서 자음을 맞춰서  숨어있는 단어, 구절, 문장을 찾는 게임
-- This is a Korean language puzzle game where players guess the hidden consonants to complete sentences with only vowels revealed.
+# 넘즐 X(Numzzle X) 🎯🧠  
 
----
-
-🎮 게임 방법 / How to Play
-
-- 모음은 모두 공개된 상태에서 게임이 시작됩니다.
-- The game starts with all vowels revealed.
-- 화면 아래 자음 버튼을 클릭해 해당 자음이 포함되어 있는지 추리합니다.
-- Click the consonant buttons at the bottom to guess if the consonant is in the sentence.
-- 정답 자음은 해당 위치에 표시되고, 오답 자음은 시도 횟수가 차감됩니다.
-- Correct consonants are revealed in their positions, while incorrect guesses reduce your attempt count.
-- 3번의 기회 안에 문장을 완성하면 승리!
-- Complete the sentence within 3 tries to win!
--	실패하면 정답 문장이 공개됩니다.
-- If you fail, the correct sentence will be shown.
+**넘즐 X는 넘즐의 규칙을 바꾸어 만든 새로운 게임입니다.**  
+*A new spin-off of Numzzle with refreshed rules and gameplay.*
 
 ---
 
-## 📅 개발 타임라인 / Development Timeline
+## 🎮 게임 개요 | Game Overview
 
-- **2025-06-18 am 11:00**  
-  갖고 있던 게임 아이디어를 모두 게임으로 만들어서 할 일이 없어짐.
-  운명의 수레바퀴와 초성퀴즈에서 영감을 받아   새로운 게임을 만들어보자고 결심함.
-
-  I turned all the game ideas I had into actual games, and suddenly found myself with nothing left to do.
-  Inspired by Wheel of Fortune and Initial Consonant Quiz, I decided to create a new game.
-
-- **2025-06-18 pm 07:00**  
-  첫 번째 프로토타입 완성 후 [`/moeum-quiz`](https://soosoohan.github.io/moeum-quiz) 레포에 업로드.  실질적인 초기 완성 단계.
-
-  First prototype completed and uploaded to the [`/moeum-quiz`](https://soosoohan.github.io/moeum-quiz) repository.
-
-- **2025-07-05**  
-  청록색 계열의 테마로 디자인을 전면 리뉴얼하고 같은 레포에 덮어씀.  
-  그러나 모바일에서 UI가 깨지는 문제가 발생함.
-
-  Redesigned the game with a turquoise theme and updated the same repository.  
-  However, layout issues appeared on mobile devices.
-
-- **2025-07-05**  
-  반응형 버전을 복구하기 위해 새로운 레포 [`/mong`](https://soosoohan.github.io/mong) 생성 후 6월 18일 버전을 개선해서 업로드.
-
-  Created a new repo [`/mong`](https://soosoohan.github.io/mong) to restore Improved and uploaded the June 18 version.
+넘즐과 넘즐 X는 수학 감각과 창의력을 발휘해야 하는 재미있는 계산 게임입니다.  
+**Numzzle and Numzzle X are fun and strategic math games that challenge your number sense and creativity.**
 
 ---
 
-### 🧪 한수수의 다른 게임들 | Other Games by Soosoo Han
+## 📋 넘즐과 같은 점 | What’s the Same
 
-- **넘즐 (Numzzle)**  
-  수학을 재미있게! 목표 숫자에 가까운 수식을 만드는 게임  
-  *Make math fun! Create formulas to match the target number*  
-  👉 http://soosoohan.github.io/numzzle
+- 숫자 카드와 연산 카드가 랜덤으로 주어집니다.  
+  > You receive random number and operator cards.
+
+- 연산 카드에는 +, −, ×, 등이 포함됩니다.  
+  > Operators include +, −, and ×.
+
+- 주어진 카드로 수식을 만들어 **최대값**을 제출합니다.  
+  > Use the given cards to create an expression with the **highest possible value**.
+
+- 실수했을 경우 **초기화 버튼**으로 수식을 다시 만들 수 있습니다.  
+  > If you make a mistake, use the reset button to rebuild your expression.
+
+---
+
+## 🧩 넘즐과 달라진 점 | What’s Different from Numzzle
+
+- 숫자 카드를 이어 붙여서 여러 자리 숫자를 만들 수 없습니다.  
+  > You cannot combine number cards to create multi-digit numbers.
+
+- 연습 게임이 없으며, 항상 NPC와 다른 카드를 받습니다.  
+  > There is no practice mode; you and the NPC always receive different cards.
+
+- 숫자 카드는 1~20까지 주어지며, 연산 카드에는 나누기(÷)가 없습니다.  
+  > Number cards range from 1 to 20, and division is not included among the operator cards.
+
+- 총 10라운드 동안 플레이하며, **각 라운드 수식 결과의 합계**로 승패를 결정합니다.  
+  > The game consists of 10 rounds, and the winner is determined by the **sum of all expression results**.
+
+- 연산 기호 카드에는 나누기(÷), 루트(√), 파이(π)가 없습니다. 넘즐 X는 넘즐보다 단순하고 쉬울 수 있습니다.  
+  > Division (÷), square root (√), and pi (π) are excluded, making Numzzle X potentially simpler than Numzzle.
+
+- 앞으로 난이도가 다른 여러 개의 버전을 개발할 예정입니다.  
+  > Multiple versions with varying difficulty levels are planned for future release.
+
+---
+
+## 📅 개발 타임라인 | Development Timeline
+
+- **2025-07-11**  
+  첫 번째 프로토타입 (넘즐초 X) 완성 후 [/numzzlex](https://github.com/soosoohan/numzzlex) 레포에 업로드. 실질적인 초기 완성 단계.  
+  > First prototype (Numzzlecho X) completed and uploaded to the [/numzzlex](https://github.com/soosoohan/numzzlex) repository. Marks the beginning of active development.
+
+---
+
+### 🧪 한수수의 게임들 | Other Games by Soosoo Han
 
 - **트링클 (Trinkle)**  
   별을 잇고 삼각형을 그리는 우주 땅따먹기 전략 게임  
@@ -62,30 +68,42 @@
 
 - **워퍼즈메이트 (Worpuzz Mate)**  
   격자를 열거나 단어를 추측하며 친구와 겨루는 어휘력 대결 게임  
-  *Compete to guess or uncover words hidden in the grid*  
+  *Compete with a friend to uncover or guess words hidden in a grid*  
   👉 http://soosoohan.github.io/worpuzzmate
 
-- **워퍼즈 (Worpuzz )**  
-  격자 속에 숨어있는 단어를 찾으며 컴퓨터와 겨루면서 어휘력을 키우는 게임.   
-  *Compete to guess or uncover words hidden in the grid*  
+- **워퍼즈 (Worpuzz)**  
+  격자 속에 숨어있는 단어를 찾으며 컴퓨터와 겨루는 어휘력 강화 게임  
+  *Strengthen your vocabulary by competing against the computer to find hidden words in a grid*  
   👉 http://soosoohan.github.io/worpuzz
 
+- **모음 퀴즈 (Moeum Quiz)**  
+  모음과 힌트를 보고 자음을 맞추어 단어나 구절이나 문장을 완성하는 퍼즐 게임  
+  *Guess the missing consonants to complete words, phrases, or sentences using vowels and clues*  
+  👉 http://soosoohan.github.io/moeum-quiz
+
+- **넘즐 (Numzzle)**  
+  수학을 재미있게! 주어진 숫자와 연산 기호로 목표 숫자에 가까운 수식을 만드는 게임  
+  *Make math fun! Create expressions that get as close as possible to the target number*  
+  👉 http://soosoohan.github.io/numzzle
+
+- **넘즐 X (Numzzle X)**  
+  수학을 재미있게! 주어진 숫자와 연산 기호로 최대값을 만드는 게임  
+  *Make math fun! Create expressions to achieve the maximum possible value*  
+  👉 http://soosoohan.github.io/numzzleX
+
 ---
+
 ### 👤 만든 사람 | Credits
 
-- 기획·개발 : 한수수  
-- 개발 보조 : 챗GPT 
-- 코딩 도움 : 클라우드  
-- 디자인 도움: 네이처리
+- **기획·개발**: 한수수  
+- **개발 보조**: 챗GPT  
+- **코딩 도움**: 클로드  
+- **디자인 도움**: 네이처리  
 
-<p>ⓒ 2025 한수수. 이 게임의 모든 권리는 제작자인 한수수에게 있습니다.<br>
- 무단 복제, 배포, 2차 창작을 금합니다.</p>
-
-- Created and Developed by Soosoo Han  
-- Development Assistant: ChatGPT  
-- Coding Support: Cloud  
-- Design Support: Nature Lee
+> - **Created and Developed by**: Soosoo Han  
+> - **Development Assistant**: ChatGPT  
+> - **Coding Support**: Claude  
+> - **Design Support**: Nature Lee
 
 <p>© 2025 Soosoo Han. All rights reserved.<br>
-    No part of this game may be copied, distributed, or modified without permission.</p>
-
+No part of this game may be copied, distributed, or modified without permission.</p>
