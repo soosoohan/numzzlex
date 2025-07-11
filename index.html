@@ -1,151 +1,656 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>모음 퀴즈 Moeum-Quiz</title>
-  <style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>넘즐X 인덱스</title>
+    <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
     body {
-      background-color: #DFF2EB;
-      font-family: 'Noto Sans KR', sans-serif;
-      text-align: center;
-      padding: 50px 20px;
-      color: #333;
+        font-family: 'Pretendard', sans-serif;
+        background: #2e8b8b;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
     }
 
-    h1 {
-      color: #4A628A;
-      font-size: 32px;
-      margin-bottom: 20px;
+    .blackboard {
+        width: 100%;
+        max-width: 100vw;
+        height: 100vh;
+        background: #2e8b8b;
+        position: relative;
+        overflow-y: auto;
+        padding: 20px;
     }
 
-    p {
-      font-size: 16px;
-      margin-bottom: 30px;
+    .chalk-text {
+        color: #f0f8ff;
+        font-family: 'Pretendard', sans-serif;
     }
 
-    .button-container {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      gap: 20px;
-      max-width: 300px;
-      margin: 0 auto;
+    /* 넘즐 메인 화면 */
+    .numzzle-main {
+        transition: all 0.5s ease;
+        position: relative;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
     }
 
-    button {
-      background-color: #7AB2D3;
-      color: white;
-      border: none;
-      border-radius: 10px;
-      padding: 15px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    .main-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
     }
 
-    button:hover {
-      background-color: #4A628A;
+    .language-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255,255,255,0.9);
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 100;
     }
 
-    .credits {
-      margin-top: 40px;
-      font-size: 13px;
-      color: #555;
+    .language-button {
+        background: #2e8b8b;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        margin: 2px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Pretendard', sans-serif;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        transition: all 0.3s ease;
     }
 
-.game_container {
-  background-color: #B9E5E8;         /* 배경색 – 부드러운 민트색 느낌으로 설정 */
-  color: #333;                       /* 텍스트 색 – 진한 회색 (가독성 좋음) */
-  width: 70%;                        /* 전체 너비의 95%만 차지 (양쪽 여백 확보) */
-  margin: 10px auto;                 /* 상하 20px, 좌우 자동 중앙 정렬 */
-  display: flex;                     /* Flexbox 사용 – 내부 요소들을 유연하게 배치 */
-  flex-direction: column;           /* 요소들을 세로 방향으로 쌓기 */
-  align-items: center;              /* 가로 방향 중앙 정렬 */
-  padding: 20px;                    /* 안쪽 여백 20px */
-  gap: 0px;                        /* 요소 사이의 간격 10px */
-  border-radius: 0;                 /* 모서리를 직각으로 (둥글게 하지 않음) */
-  text-align: center;              /* 안의 텍스트를 가운데 정렬 */
-}
-
-    .game-buttons button {
-      width: 200px;
-      height: 70px;
-      font-size: 1.5em;
-      background-color: #7AB2D3;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    .language-button:hover {
+        background: #20b2aa;
     }
 
-    .game-buttons button:hover {
-      background-color: #4A628A;
-      color: #fff;
+    .language-button.active {
+        background: #ff69b4;
     }
-  </style>
+
+    .games-hub-btn {
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background: rgba(255,255,255,0.9);
+        color: #2e8b8b;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 12px;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-family: 'Pretendard', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 100;
+    }
+
+    .games-hub-btn:hover {
+        background: #f0f8ff;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .game-description {
+        flex: 1;
+        color: #f0f8ff;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        line-height: 1.4;
+        margin-top: 20px;
+        padding: 0 20px;
+        max-width: 100%;
+    }
+
+    .game-description h3 {
+        color: #add8e6;
+        margin-bottom: 15px;
+        font-size: clamp(1rem, 3vw, 1.2rem);
+        border-bottom: 2px solid #add8e6;
+        padding-bottom: 8px;
+    }
+
+    .game-description p {
+        margin-bottom: 15px;
+        word-wrap: break-word;
+    }
+
+    .game-description ul {
+        margin-bottom: 15px;
+        padding-left: 20px;
+    }
+
+    .game-description li {
+        margin-bottom: 8px;
+        word-wrap: break-word;
+    }
+
+    .main-game-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    .main-game-button {
+        background: rgba(255,255,255,0.9);
+        color: #2e8b8b;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-family: 'Pretendard', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        flex: 1;
+        min-width: 120px;
+        max-width: 200px;
+    }
+
+    .main-game-button:hover {
+        background: #f0f8ff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    /* 게임 허브 화면 */
+    .games-hub {
+        display: none;
+        padding: 20px;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+    .games-hub.active {
+        display: block;
+    }
+
+    .hub-title {
+        text-align: center;
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #f0f8ff;
+    }
+
+    .hub-subtitle {
+        text-align: center;
+        font-size: clamp(1rem, 2.5vw, 1.2rem);
+        margin-bottom: 30px;
+        color: #add8e6;
+    }
+
+    .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .game-card {
+        background: rgba(255,255,255,0.95);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .game-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    .game-card-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+
+    .game-emoji {
+        font-size: clamp(1.8rem, 4vw, 2.2rem);
+    }
+
+    .game-title {
+        font-size: clamp(1.2rem, 3vw, 1.4rem);
+        font-weight: bold;
+        color: #2e8b8b;
+        word-wrap: break-word;
+    }
+
+    .game-description-text {
+        color: #333;
+        line-height: 1.5;
+        margin-bottom: 15px;
+        font-size: clamp(0.9rem, 2.2vw, 1rem);
+        word-wrap: break-word;
+    }
+
+    .game-difficulty {
+        background: #2e8b8b;
+        color: white;
+        padding: 5px 12px;
+        border-radius: 15px;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .game-features {
+        color: #666;
+        font-size: clamp(0.8rem, 2vw, 0.9rem);
+        line-height: 1.4;
+        word-wrap: break-word;
+    }
+
+    .credits-area {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        color: #f0f8ff;
+        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+        line-height: 1.3;
+        text-align: right;
+        z-index: 50;
+    }
+
+    .credits-item {
+        margin-bottom: 3px;
+        transform: rotate(-1deg);
+    }
+
+    .credits-item:nth-child(2) {
+        transform: rotate(0.5deg);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /* 모바일 최적화 */
+    @media (max-width: 768px) {
+        .blackboard {
+            padding: 10px;
+        }
+
+        .language-toggle {
+            top: 10px;
+            right: 10px;
+            padding: 6px;
+        }
+
+        .games-hub-btn {
+            top: 60px;
+            right: 10px;
+            padding: 8px 12px;
+        }
+
+        .game-description {
+            padding: 0 10px;
+            margin-top: 15px;
+        }
+
+        .main-game-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .main-game-button {
+            width: 100%;
+            max-width: 280px;
+            padding: 15px;
+        }
+
+        .games-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .game-card {
+            padding: 15px;
+        }
+
+        .credits-area {
+            bottom: 5px;
+            right: 5px;
+        }
+    }
+
+    /* 매우 작은 화면 */
+    @media (max-width: 480px) {
+        .main-title {
+            margin-top: 60px;
+        }
+
+        .language-toggle {
+            position: static;
+            float: right;
+            margin-bottom: 10px;
+        }
+
+        .games-hub-btn {
+            position: static;
+            float: right;
+            clear: both;
+            margin-bottom: 20px;
+        }
+
+        .game-description {
+            clear: both;
+            padding-top: 20px;
+        }
+    }
+
+    /* 가로 모드 모바일 */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .blackboard {
+            height: auto;
+            min-height: 100vh;
+        }
+
+        .main-title {
+            font-size: 2rem;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .game-description {
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .main-game-buttons {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+        }
+
+        .main-game-button {
+            flex: 1;
+            min-width: 100px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+
 </head>
 <body>
-  <h1>모음 퀴즈 🌼 Moeum-Quiz</h1>
-  <p>
-    한글의 아름다운 구조를 활용한 교육 퍼즐 게임입니다.<br>
-    초성 게임이 자음만 보여주는 방식이라면,<br>
-    모음 퀴즈는 <strong>모음(중성)</strong>을 먼저 보여주고, <strong>자음(초성/종성)</strong>을 추리해 표현을 완성하는 게임이에요.<br><br>
+    <div class="blackboard">
+        <!-- 넘즐 메인 화면 -->
+        <div class="numzzle-main" id="numzzle-main">
+            <div class="language-toggle">
+                <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
+                <button class="language-button" onclick="toggleLanguage('en')">English</button>
+            </div>
 
-    어린이용 게임에는 과학 상식이나 기초 지식을 담은 문장이,<br>
-    어른용 게임에는 드라마, 영화, 소설 제목 등 다양한 콘텐츠가 등장합니다.<br><br>
 
-    문장뿐 아니라 작품 제목이나 짧은 표현들도 포함되어 있어요.<br>
-    예: <em>로미오와 줄리엣, 말리와 나, ○○는 ○○에서 ○○해요</em> 같은 문장들!<br><br>
+        <button class="games-hub-btn" onclick="showGamesHub()">
+            🎮 수수의 게임들
+        </button>
 
-    💡 "이런 문장도 재밌겠다!" 싶은 게 있다면 댓글로 추천해주세요.<br>
-    여러분의 아이디어가 다음 퀴즈에 등장할 수도 있어요 :)
-  </p>
+        <h1 class="chalk-text main-title">넘즐X</h1>
+        
+        <div class="game-description chalk-text" id="korean-description">
+            <h3>🎮 게임 소개</h3>
+            <p>넘즐 X (NUMZZLE X)=넘버(NUMBER) + 퍼즐(PUZZLE)+X</p>
+            <p>넘즐은 수학 감각과 창의력을 발휘해야 하는 재미있는 계산 게임입니다.<br>
+               한 라운드마다 주어진 카드로 최대값이 되는 수식을 만들고, 10라운드가 끝난 후 더 큰 숫자를 을 만든 사람이 점수를 얻습니다.</p>
 
-  <div class="button-container">
-<button onclick="window.open(' https://youtu.be/4rLktuVf9xM?si=rgHNJZAhYPMTxEKA', '_blank')"
-  class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-  🎥 튜토리얼 영상 보기
-</button>
+            <h3>📋 게임 규칙</h3>
+            <ul>
+<li> npc와 사용자는 서로 다른   숫자카드와 연산카드를 받습니다.</li>
+                <li>주어진 카드로 수식을 만들어 최대값이 되는 수식을 제출합니다.</li>
+                <li>실수했을 경우 초기화 버튼으로 수식을 다시 만들 수 있습니다.</li>
+                <li>총 10라운드를 진행하며, 누적 점수가 더 높은 쪽이 승리합니다!</li>
+                            </ul>
 
-    <button onclick="location.href='moeum_kid.html'"> 어린이용 모음퀴즈</button>
-    <button onclick="location.href='moeum_adult.html'"> 어른용 모음퀴즈</button>
-    <button onclick="location.href='moeum_food.html'"> 모음퀴즈 음식편</button>
-   </div>
-<br><br><br>
-  <div class="game_container">
+            <div class="main-game-buttons">
+                <button class="main-game-button" onclick="location.href='N4.html'">
+                    넘즐초 X
+                </button>
+                <button class="main-game-button" onclick="location.href='N1.html'">
+                    준비중
+                </button>
+                <button class="main-game-button" onclick="location.href='N2.html'">
+                    준비중
+                </button>
+                <button class="main-game-button" onclick="location.href='N3.html'">
+                    준비중
+                </button>
+            </div>
+        </div>
 
-  <p><strong>👀 한수수가 만든 다른 게임도 슬쩍 보고 가세요:</strong></p>   
-    
-    <p><strong>워퍼즈 메이트</strong> : 친구와 같이 하는 단어 찾기 게임! 두근두근 보장!<br>
-      <em>Worpuzz Mate:</em> A word puzzle game to play with a friend! Thrills guaranteed!
-    </p>
-      <button onclick="location.href='https://soosoohan.github.io/worpuzzmate/'">워퍼즈 메이트</button>
-    
-    <p><strong>넘즐</strong> : 숫자 카드로 목표값에 가까운 수식을 만드는 수학 게임! 두뇌 개발 보장!<br>
-      <em>Numzzle:</em> A math card game to build formulas close to the target number! Brain power guaranteed!
-    </p>
-      <button onclick="location.href='https://soosoohan.github.io/numzzle/'">넘즐</button>
-    <p><strong>트링클</strong> : 별을 이어 삼각형을 만드는 우주 땅따먹기 전략 게임! 재미 보장!<br>
-      <em>Trinkle:</em> A space strategy game where you connect stars to make triangles! Fun guaranteed!
-    </p>
-      <button onclick="location.href='https://soosoohan.github.io/trinkle/'">트링클</button>
-    <p><strong>워퍼즈</strong> : 똑똑해진 컴퓨터와 퍼즐 대결! 재미와 어휘력 두 마리 토끼 잡기 보장!<br>
-      <em>Worpuzz Bot:</em> Battle a smarter computer! Boost your vocabulary and enjoy the challenge!
-    </p>
-      <button onclick="location.href='https://soosoohan.github.io/worpuzz/'">워퍼즈</button>
+        <div class="game-description chalk-text hidden" id="english-description">
+            <h3>🎮 Game Overview</h3>
+            <p>NUMZZLE X = NUMBER + PUZZLE +X</p>
+            <p>Numzzle X is a fun and strategic math game that challenges your sense of numbers and creativity.</p>
+           
+            <h3>📋 Game Rules</h3>
+            <ul>
+<li>You and  the computer gives different cards.</li>
 
-  </div>
-  <div class="credits">
-<p> 기획·개발 : 한수수<br>
-개발 보조 : 챗GPT<br>
-코딩 도움 : 클라우드<br>
-디자인 도움: 네이처 리<br>
-ⓒ 2025 한수수. 이 게임의 모든 권리는 제작자인 한수수에게 있습니다. 무단 복제, 배포, 2차 창작을 금합니다.<br>
-Created and Developed by Soosoo Han<br>
-Development Assistant: ChatGPT<br>
-Coding Support: Claude<br>
-Design Support: Nature Lee<br>
-라이센스: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a></p>
-  </div>
+      <li> In each round, players create an expression that yields the highest possible value using the given cards. </li> 
+<li>If you make a mistake, use the reset button to start your expression over.</li>
+                <li> After 10 rounds, the player who has created the greater total score wins. </li>  
+
+            </ul>
+
+            <div class="main-game-buttons">
+                <button class="main-game-button" onclick="location.href='N4.html'">
+                    NUMZZLE CHO X
+                </button>
+                <button class="main-game-button" onclick="location.href='N1.html'">
+                    coming soon
+                </button>
+                <button class="main-game-button" onclick="location.href='N2.html'">
+                    coming soon
+                </button>
+                <button class="main-game-button" onclick="location.href='N3.html'">
+                    coming soon
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 게임 허브 화면 -->
+    <div class="games-hub" id="games-hub">
+        <h1 class="hub-title">🎮 수수의 게임 터미널</h1>
+        <p class="hub-subtitle">한수수가 만든 다양한 게임들을 만나보세요!</p>
+        
+        <div class="games-grid">
+            <div class="game-card" onclick="location.href='https://soosoohan.github.io/numzzle/'">
+                <div class="game-card-header">
+                    <div class="game-emoji">🔢</div>
+                    <div class="game-title">넘즐 (NUMZZLE)</div>
+                </div>
+                <div class="game-difficulty">수학 • 계산</div>
+                <div class="game-description-text">
+                    숫자 카드로 목표값에 가까운 수식을 만드는 수학 게임! 두뇌 개발 보장!<br>
+                    A math card game to build formulas close to the target number! Brain power guaranteed!
+                </div>
+                <div class="game-features">
+                    • 4가지 난이도 (넘즐초,넘즐잼, 넘즐, 넘즐업)<br>
+                    • 연습모드와 실전모드가 있음<br>
+                    • 10라운드 승부
+                </div>
+            </div>
+
+            <div class="game-card" onclick="location.href='https://soosoohan.github.io/worpuzz/'">
+                <div class="game-card-header">
+                    <div class="game-emoji">📝</div>
+                    <div class="game-title">워퍼즈(WORPUZZ)</div>
+                </div>
+                <div class="game-difficulty">어휘력, 추리력</div>
+                <div class="game-description-text">
+                    똑똑해진 컴퓨터와 퍼즐 대결! 재미와 어휘력 두 마리 토끼 잡기 보장!<br>
+                    Battle a smarter computer! Boost your vocabulary and enjoy the challenge!
+                </div>
+                <div class="game-features">
+                    • 한국어와 영어로 가능<br>
+                    • 음성상징어 사자성어 고사성어<br>
+                    • 옥스포드 사전의 난이도별로 영어 단어 있음
+                </div>
+            </div>
+
+            <div class="game-card" onclick="location.href='https://soosoohan.github.io/moeum-quiz/'">
+                <div class="game-card-header">
+                    <div class="game-emoji">📚</div>
+                    <div class="game-title">모음퀴즈<br>(Moeum Quiz)</div>
+                </div>
+                <div class="game-difficulty">어휘력, 추리력</div>
+                <div class="game-description-text">
+                    모음만 있는 문장에서 힌트를 보고 자음을 넣어 문장을 완성하는 게임. 웃음 보장!<br>
+                    A Korean puzzle game where vowels guide you to the answer!
+                </div>
+                <div class="game-features">
+                    • 계속 업그레이드 중<br>
+                    • 초성퀴즈나 운명의 수레바퀴와 비슷함<br>
+                    • 여행지, 음식, 일상 대화 등. 다양한 주제
+                </div>
+            </div>
+
+            <div class="game-card" onclick="location.href='https://soosoohan.github.io/trinkle/'">
+                <div class="game-card-header">
+                    <div class="game-emoji">✨</div>
+                    <div class="game-title">트링클 <br>(TRINKLE)</div>
+                </div>
+                <div class="game-difficulty">기하 수학</div>
+                <div class="game-description-text">
+                    별을 이어 삼각형을 만드는 우주 땅따먹기 전략 게임! 재미 보장!<br>
+                    A space strategy game where you connect stars to make triangles! Fun guaranteed!
+                </div>
+                <div class="game-features">
+                    • 시각적 패턴 인식<br>
+                    • npc와 대결할 수 있고 친구와 같이 하기도 가능<br>
+                    • 바둑, 장기,체스 처럼 예지력 향상
+                </div>
+            </div>
+
+            <div class="game-card" onclick="location.href='https://soosoohan.github.io/worpuzzmate/'">
+                <div class="game-card-header">
+                    <div class="game-emoji">🎯</div>
+                    <div class="game-title">워퍼즈메이트(Worpuzz Mate)</div>
+                </div>
+                <div class="game-difficulty">어휘력 추리력 </div>
+                <div class="game-description-text">
+                    친구와 같이 하는 단어 찾기 게임! 두근두근 보장!<br>
+                    A word puzzle game to play with a friend! Thrills guaranteed!
+                </div>
+                <div class="game-features">
+                    • 워퍼즈의 2인 대결 모드<br>
+                    • 어휘력 향상, 추리력 향상<br>
+                    • 옥스포드 사전의 난이도별로 영어 단어 있음
+                </div>
+            </div>
+
+            <div class="game-card" onclick="location.href='https://soosoohan.github.io/numzzlex/'">>
+                <div class="game-card-header">
+                    <div class="game-emoji">➕</div>
+                    <div class="game-title">넘즐 X<br>(NUMZZLE X)</div>
+                </div>
+                <div class="game-difficulty"> 수학 연산</div>
+                <div class="game-description-text">
+     각 라운드마다 주어진 숫자와 연산카드로 최대값을 만들고 10라운드가 끝났을 때 합계숫자가 큰 사람이 이기는 게임. <br>In each round, players create an expression that yields the highest possible value using the given cards.<br> After 10 rounds, the player who has created the greater total score wins.           </div>
+                <div class="game-features">
+                    • 개발 진행 중<br>
+                    • 계속 나옵니다. <br>
+                    • 난이도 다양함
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="credits-area chalk-text">
+        <div class="credits-item">기획·개발 : 한수수</div>
+        <div class="credits-item">개발 보조: 챗GPT</div>
+        <div class="credits-item">코딩 도움: 클라우드</div>
+        <div class="credits-item">디자인 도움: 네이처리</div>
+        <div class="credits-item">© 2025 한수수</div>
+    </div>
+</div>
+
+<script>
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const isPhoneScreen = w <= 850 || h <= 500;
+    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+    if (isTouch && isPhoneScreen) {
+        // 모바일 환경에서는 리다이렉트 하지 않고 반응형으로 표시
+        // location.href = "https://soosoohan.github.io/semoddang/";
+    }
+
+    function toggleLanguage(lang) {
+        const koreanDesc = document.getElementById('korean-description');
+        const englishDesc = document.getElementById('english-description');
+        const buttons = document.querySelectorAll('.language-button');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        if (lang === 'ko') {
+            koreanDesc.classList.remove('hidden');
+            englishDesc.classList.add('hidden');
+            buttons[0].classList.add('active');
+        } else {
+            koreanDesc.classList.add('hidden');
+            englishDesc.classList.remove('hidden');
+            buttons[1].classList.add('active');
+        }
+    }
+
+    function showGamesHub() {
+        const numzzleMain = document.getElementById('numzzle-main');
+        const gamesHub = document.getElementById('games-hub');
+        
+        numzzleMain.style.display = 'none';
+        gamesHub.classList.add('active');
+    }
+
+    // 뒤로가기 기능 추가
+    window.addEventListener('popstate', function(event) {
+        const numzzleMain = document.getElementById('numzzle-main');
+        const gamesHub = document.getElementById('games-hub');
+        
+        if (gamesHub.classList.contains('active')) {
+            numzzleMain.style.display = 'block';
+            gamesHub.classList.remove('active');
+        }
+    });
+</script>
+
+
 </body>
 </html>
