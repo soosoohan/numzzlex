@@ -180,96 +180,7 @@
     }
 
     /* 게임 허브 화면 */
-    .games-hub {
-        display: none;
-        padding: 20px;
-        height: 100%;
-        overflow-y: auto;
-    }
-
-    .games-hub.active {
-        display: block;
-    }
-
-    .hub-title {
-        text-align: center;
-        font-size: clamp(1.8rem, 4vw, 2.5rem);
-        font-weight: bold;
-        margin-bottom: 20px;
-        color: #f0f8ff;
-    }
-
-    .hub-subtitle {
-        text-align: center;
-        font-size: clamp(1rem, 2.5vw, 1.2rem);
-        margin-bottom: 30px;
-        color: #add8e6;
-    }
-
-    .games-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    .game-card {
-        background: rgba(255,255,255,0.95);
-        border-radius: 15px;
-        padding: 20px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        transition: all 0.3s ease;
-        cursor: pointer;
-    }
-
-    .game-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    }
-
-    .game-card-header {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        margin-bottom: 15px;
-    }
-
-    .game-emoji {
-        font-size: clamp(1.8rem, 4vw, 2.2rem);
-    }
-
-    .game-title {
-        font-size: clamp(1.2rem, 3vw, 1.4rem);
-        font-weight: bold;
-        color: #2e8b8b;
-        word-wrap: break-word;
-    }
-
-    .game-description-text {
-        color: #333;
-        line-height: 1.5;
-        margin-bottom: 15px;
-        font-size: clamp(0.9rem, 2.2vw, 1rem);
-        word-wrap: break-word;
-    }
-
-    .game-difficulty {
-        background: #2e8b8b;
-        color: white;
-        padding: 5px 12px;
-        border-radius: 15px;
-        font-size: clamp(0.8rem, 2vw, 0.9rem);
-        display: inline-block;
-        margin-bottom: 10px;
-    }
-
-    .game-features {
-        color: #666;
-        font-size: clamp(0.8rem, 2vw, 0.9rem);
-        line-height: 1.4;
-        word-wrap: break-word;
-    }
+    
 
     .credits-area {
         position: fixed;
@@ -355,7 +266,7 @@
         .language-toggle {
             position: static;
             float: right;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
         }
 
         .games-hub-btn {
@@ -416,8 +327,8 @@
                 <button class="language-button" onclick="toggleLanguage('en')">English</button>
             </div>
 
-
-        <button class="games-hub-btn" onclick="showGamesHub()">
+  
+        <button class="games-hub-btn" onclick="location.href='https://soosoohan.github.io/soosooland/'">
             🎮 수수의 게임들
         </button>
 
@@ -431,26 +342,37 @@
 
             <h3>📋 게임 규칙</h3>
             <ul>
-<li> npc와 사용자는 서로 다른   숫자카드와 연산카드를 받습니다.</li>
-                <li>주어진 카드로 수식을 만들어 최대값이 되는 수식을 제출합니다.</li>
-                <li>실수했을 경우 초기화 버튼으로 수식을 다시 만들 수 있습니다.</li>
-                <li>총 10라운드를 진행하며, 누적 점수가 더 높은 쪽이 승리합니다!</li>
+    <li> npc와 사용자는 서로 다른   숫자카드와 연산카드를 받습니다.</li>
+    <li> npc 와 사용자는 주어진 카드를 모두 사용해야 합니다.</li>
+    <li>주어진 카드로 수식을 만들어 최대값을 만드는 게임은 넘즐초 X맥시, ,넘즐잼 X맥시, 넘즐X 맥시가 있습니다.</li>
+    <li>주어진 카드로 수식을 만들어 최소값을 만드는 게임은 넘즐초 X미니, ,넘즐잼 X미니, 넘즐X 미니가 있습니다.</li>
+    <li>실수했을 경우 초기화 버튼으로 수식을 다시 만들 수 있습니다.</li>
+    <li>수식의 결과는 각 라운드의 점수가 됩니다.</li>           
+          <li>총 10라운드를 진행하며, 멕시 게임은 누적 점수가 더 높은 쪽이 승리합니다!</li>
+     <li>총 10라운드를 진행하며, 미니 게임은 누적 점수가 더 낮은 쪽이 승리합니다!</li>
                             </ul>
 
             <div class="main-game-buttons">
                 <button class="main-game-button" onclick="location.href='X1.html'">
-                    넘즐초 X
+                    넘즐초 X 맥시
                 </button>
                 <button class="main-game-button" onclick="location.href='X2.html'">
-                    넘즐잼 X
+                    넘즐잼 X 맥시
                 </button>
                 <button class="main-game-button" onclick="location.href='X3.html'">
-                    준비중
+                    넘즐 X 맥시
                 </button>
                 <button class="main-game-button" onclick="location.href='X4.html'">
-                    준비중
+                  넘즐초 X 미니
                 </button>
-            </div>
+            <button class="main-game-button" onclick="location.href='X5.html'">
+                   넘즐잼 X 미니
+                </button>
+<button class="main-game-button" onclick="location.href='X6.html'">
+                    넘즐 X 미니
+                </button>
+                        
+</div>
         </div>
 
         <div class="game-description chalk-text hidden" id="english-description">
@@ -460,138 +382,44 @@
            
             <h3>📋 Game Rules</h3>
             <ul>
-<li>You and  the computer gives different cards.</li>
+<li>NPC and user receive different number cards and operation cards.</li>
+<li>Users and computers must use all given cards.</li>
+<li>Games where you create expressions with given cards to make the maximum value are Number Cho X Maxi, Number Jam X Maxi, and Number X Maxi.</li>
+<li>Games where you create expressions with given cards to make the minimum value are Number Cho X Mini, Number Jam X Mini, and Number X Mini.</li>
+<li>If you make a mistake, you can use the reset button to recreate the expression.</li>
+<li>The result of the expression becomes the score for each round.</li>
+<li>A total of 10 rounds are played, and in Maxi games, the side with the higher cumulative score wins!</li>
+<li>A total of 10 rounds are played, and in Mini games, the side with the lower cumulative score wins!</li>
 
-      <li> In each round, players create an expression that yields the highest possible value using the given cards. </li> 
-<li>If you make a mistake, use the reset button to start your expression over.</li>
-                <li> After 10 rounds, the player who has created the greater total score wins. </li>  
 
             </ul>
-
-            <div class="main-game-buttons">
+<div class="main-game-buttons">
                 <button class="main-game-button" onclick="location.href='X1.html'">
-                    NUMZZLE CHO X
+                    NUMZZLE CHO X MAXI
                 </button>
                 <button class="main-game-button" onclick="location.href='X2.html'">
-                    NUMZZLE JAM X
+                    NUMZZLE JAM X MAXI
                 </button>
-                <button class="main-game-button" onclick="location.href='N2.html'">
-                    coming soon
+                <button class="main-game-button" onclick="location.href='X3.html'">
+                   NUMZZLE X MAXI
                 </button>
-                <button class="main-game-button" onclick="location.href='N3.html'">
-                    coming soon
+                <button class="main-game-button" onclick="location.href='X4.html'">
+                  NUMZZLE CHO X MINI
                 </button>
+            <button class="main-game-button" onclick="location.href='X5.html'">
+                   NUMZZLE JAM X MINI
+                </button>
+<button class="main-game-button" onclick="location.href='X6.html'">
+                    NUMZZLE X MINI
+               </button>
             </div>
         </div>
     </div>
 
     <!-- 게임 허브 화면 -->
-    <div class="games-hub" id="games-hub">
-        <h1 class="hub-title">🎮 수수의 게임 터미널</h1>
-        <p class="hub-subtitle">한수수가 만든 다양한 게임들을 만나보세요!</p>
-        
-        <div class="games-grid">
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/numzzle/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">🔢</div>
-                    <div class="game-title">넘즐 (NUMZZLE)</div>
-                </div>
-                <div class="game-difficulty">수학 • 계산</div>
-                <div class="game-description-text">
-                    숫자 카드로 목표값에 가까운 수식을 만드는 수학 게임! 두뇌 개발 보장!<br>
-                    A math card game to build formulas close to the target number! Brain power guaranteed!
-                </div>
-                <div class="game-features">
-                    • 4가지 난이도 (넘즐초,넘즐잼, 넘즐, 넘즐업)<br>
-                    • 연습모드와 실전모드가 있음<br>
-                    • 10라운드 승부
-                </div>
-            </div>
+    
 
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/worpuzz/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">📝</div>
-                    <div class="game-title">워퍼즈(WORPUZZ)</div>
-                </div>
-                <div class="game-difficulty">어휘력, 추리력</div>
-                <div class="game-description-text">
-                    똑똑해진 컴퓨터와 퍼즐 대결! 재미와 어휘력 두 마리 토끼 잡기 보장!<br>
-                    Battle a smarter computer! Boost your vocabulary and enjoy the challenge!
-                </div>
-                <div class="game-features">
-                    • 한국어와 영어로 가능<br>
-                    • 음성상징어 사자성어 고사성어<br>
-                    • 옥스포드 사전의 난이도별로 영어 단어 있음
-                </div>
-            </div>
-
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/moeum-quiz/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">📚</div>
-                    <div class="game-title">모음퀴즈<br>(Moeum Quiz)</div>
-                </div>
-                <div class="game-difficulty">어휘력, 추리력</div>
-                <div class="game-description-text">
-                    모음만 있는 문장에서 힌트를 보고 자음을 넣어 문장을 완성하는 게임. 웃음 보장!<br>
-                    A Korean puzzle game where vowels guide you to the answer!
-                </div>
-                <div class="game-features">
-                    • 계속 업그레이드 중<br>
-                    • 초성퀴즈나 운명의 수레바퀴와 비슷함<br>
-                    • 여행지, 음식, 일상 대화 등. 다양한 주제
-                </div>
-            </div>
-
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/trinkle/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">✨</div>
-                    <div class="game-title">트링클 <br>(TRINKLE)</div>
-                </div>
-                <div class="game-difficulty">기하 수학</div>
-                <div class="game-description-text">
-                    별을 이어 삼각형을 만드는 우주 땅따먹기 전략 게임! 재미 보장!<br>
-                    A space strategy game where you connect stars to make triangles! Fun guaranteed!
-                </div>
-                <div class="game-features">
-                    • 시각적 패턴 인식<br>
-                    • npc와 대결할 수 있고 친구와 같이 하기도 가능<br>
-                    • 바둑, 장기,체스 처럼 예지력 향상
-                </div>
-            </div>
-
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/worpuzzmate/'">
-                <div class="game-card-header">
-                    <div class="game-emoji">🎯</div>
-                    <div class="game-title">워퍼즈메이트(Worpuzz Mate)</div>
-                </div>
-                <div class="game-difficulty">어휘력 추리력 </div>
-                <div class="game-description-text">
-                    친구와 같이 하는 단어 찾기 게임! 두근두근 보장!<br>
-                    A word puzzle game to play with a friend! Thrills guaranteed!
-                </div>
-                <div class="game-features">
-                    • 워퍼즈의 2인 대결 모드<br>
-                    • 어휘력 향상, 추리력 향상<br>
-                    • 옥스포드 사전의 난이도별로 영어 단어 있음
-                </div>
-            </div>
-
-            <div class="game-card" onclick="location.href='https://soosoohan.github.io/numzzlex/'">>
-                <div class="game-card-header">
-                    <div class="game-emoji">➕</div>
-                    <div class="game-title">넘즐 X<br>(NUMZZLE X)</div>
-                </div>
-                <div class="game-difficulty"> 수학 연산</div>
-                <div class="game-description-text">
-     각 라운드마다 주어진 숫자와 연산카드로 최대값을 만들고 10라운드가 끝났을 때 합계숫자가 큰 사람이 이기는 게임. <br>In each round, players create an expression that yields the highest possible value using the given cards.<br> After 10 rounds, the player who has created the greater total score wins.           </div>
-                <div class="game-features">
-                    • 개발 진행 중<br>
-                    • 계속 나옵니다. <br>
-                    • 난이도 다양함
-                </div>
-            </div>
-        </div>
-    </div>
+            
 
     <div class="credits-area chalk-text">
         <div class="credits-item">기획·개발 : 한수수</div>
