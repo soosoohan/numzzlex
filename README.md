@@ -4,6 +4,16 @@
 **넘즐 X는 넘즐의 규칙을 바꾸어 만든 새로운 게임입니다.**  
 *A new spin-off of Numzzle with refreshed rules and gameplay.*
 
+>---
+>
+> 🛡️ **수수의 만든 모든 게임은 저작권 등록이 진행 중입니다.**  
+> 무단 복제, 무단 이용, 상업적 사용은 법적 책임을 초래할 수 있습니다.  
+>  
+> 🛡️ **This game is currently undergoing copyright registration.**  
+> Unauthorized reproduction, use, or commercial distribution may result in legal consequences.
+>
+> ----
+
 ---
 
 ## 🎮 게임 개요 | Game Overview
