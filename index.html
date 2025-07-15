@@ -442,14 +442,6 @@
 
 <script>
     const w = window.innerWidth;
-    const h = window.innerHeight;
-    const isPhoneScreen = w <= 850 || h <= 500;
-    const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
-    if (isTouch && isPhoneScreen) {
-        // 모바일 환경에서는 리다이렉트 하지 않고 반응형으로 표시
-        // location.href = "https://soosoohan.github.io/semoddang/";
-    }
 
     function toggleLanguage(lang) {
         const koreanDesc = document.getElementById('korean-description');
