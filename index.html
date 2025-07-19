@@ -2,19 +2,9 @@
 
 <html lang="ko">
 <head>
-      <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-4YZHC1G9FN');
-</script>
-  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>넘즐X</title>
+    <title>넘즐X 인덱스</title>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
@@ -60,7 +50,7 @@
     }
 
     .main-title {
-        font-size: clamp(2rem, 5vw, 3rem);
+        font-size: clamp(1.3rem, 3.7vw, 1.9rem);
         font-weight: bold;
         text-align: center;
         margin-bottom: 20px;
@@ -108,7 +98,7 @@
         border: none;
         padding: 10px 15px;
         border-radius: 12px;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-size: clamp(1rem, 3vw, 1.3rem);
         font-family: 'Pretendard', sans-serif;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -138,7 +128,7 @@
     .game-description h3 {
         color: #add8e6;
         margin-bottom: 15px;
-        font-size: clamp(1rem, 3vw, 1.2rem);
+        font-size: clamp(1rem, 3vw, 1.3rem);
         border-bottom: 2px solid #add8e6;
         padding-bottom: 8px;
     }
@@ -173,7 +163,7 @@
         padding: 12px 20px;
         border: none;
         border-radius: 10px;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        font-size: clamp(1rem, 3vw, 1.3rem);
         font-family: 'Pretendard', sans-serif;
         cursor: pointer;
         transition: all 0.3s ease;
@@ -188,7 +178,43 @@
         transform: translateY(-3px);
         box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
+.square-button {
+            width: 100px;
+            height: 100px;
+            background: #2e8b8b;
+            color: white;
+            border: none;
+            border-radius: 12px; /* 둥근 모서리 */
+            cursor: pointer;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.2;
+            margin: 8px;
+            transition: all 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
 
+    .square-button:hover {
+        background-color: #FF8FAB; /* 호버 시 진한 분홍 */
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .square-button:active {
+        transform: scale(0.95);
+    }
+.credits {
+        margin-top: 50px;
+        font-size: 0.85em;
+        color: #A65A5A;
+        background-color: #FFE8CD;
+        padding: 20px;
+        border-radius: 10px;
+    }
     /* 게임 허브 화면 */
     
 
@@ -338,10 +364,7 @@
             </div>
 
   
-        <button class="games-hub-btn" onclick="location.href='https://soosoohan.github.io/soosooland/'">
-            🎮 수수의 게임들
-        </button>
-
+  
         <h1 class="chalk-text main-title">넘즐X</h1>
         
         <div class="game-description chalk-text" id="korean-description">
@@ -424,24 +447,36 @@
                </button>
             </div>
         </div>
-    </div>
-
+    
     <!-- 게임 허브 화면 -->
     
-
-            
-
-    <div class="credits-area chalk-text">
-        <div class="credits-item">기획·개발 : 한수수</div>
-        <div class="credits-item">개발 보조: 챗GPT</div>
-        <div class="credits-item">코딩 도움: 클로드</div>
-        <div class="credits-item">디자인 도움: 네이처리</div>
-        <div class="credits-item">© 2025 한수수</div>
+<div class="credits">
+        
+<button class="square-button" onclick="location.href='https://soosoohan.github.io/soosooland/'">
+    <div>재미있게</div>
+    <div>공부하는</div>
+    <div>수수허브</div>
+</button>
+<p>
+        기획·개발 : 한수수<br>
+        개발 보조 : 챗GPT<br>
+        코딩 도움 : 클로드<br>
+        디자인 도움: 네이처 리<br>
+        ⓒ 2025 한수수. 이 게임의 모든 권리는 제작자인 한수수에게 있습니다.<br>
+        무단 복제, 배포, 2차 창작을 금합니다.<br><br>
+        Created and Developed by Soosoo Han<br>
+        Development Assistant: ChatGPT<br>
+        Coding Support: Claude<br>
+        Design Support: Nature Lee<br>
+        © 2025 Soosoo Han. All rights reserved.<br>
+        No part of this game may be copied, distributed, or modified without permission.
+        </p>
     </div>
+</div>
 </div>
 
 <script>
-    const w = window.innerWidth;
+    
 
     function toggleLanguage(lang) {
         const koreanDesc = document.getElementById('korean-description');
