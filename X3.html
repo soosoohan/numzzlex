@@ -1,8 +1,8 @@
 <!DOCTYPE html>
+
 <html lang="ko">
 <head>
-<head>
-   <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,11 +10,18 @@
       gtag('js', new Date());
       gtag('config', 'G-4YZHC1G9FN');
     </script>
- <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>넘즐X맥시</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
+<title>넘즐 MAXI X3</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
+body {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .cloud-btn {
   background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #90caf9 100%);
   border-radius: 50px;
@@ -32,7 +39,7 @@
   border: 2px solid #3b82f6;
   border-radius: 12px;
   min-width: 60px;
-  font-size: 20px;
+  font-size: clamp(1rem, 3vw, 1.3rem);
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -85,9 +92,9 @@
 
 <!-- 헤더 -->
 <div class="text-center mb-6">
-  <h1 class="text-3xl text-purple-600 mb-2">🔥 넘즐 MAXI</h1>
-  <p class="text-gray-600">가장 큰 숫자를 만드세요! (10라운드 합계가 클수록 승리)</p>
-  <p class="text-sm text-gray-500">📋 모든 카드 사용 필수 | ➕➖✖️➗ 모든 연산자 사용 가능</p>
+  <h1 class="text-2xl text-purple-600 mb-2"> 넘즐 MAXI</h1>
+  <p class="text-gray-600">가장 큰 수식의 결과를 만드세요! (10라운드 합계가 클수록 승리)</p>
+  <p class="text-[clamp(1rem, 3vw, 1.3rem) text-gray-500">📋 모든 카드 사용 필수 | ➕➖✖️➗ 모든 연산자 사용 가능</p>
 </div>
 
 <!-- 제어 버튼 -->
@@ -95,14 +102,14 @@
   <button onclick="restartGame()" class="cloud-btn text-green-800 font-bold py-3 px-6 mr-4">
     🔄 다시하기
   </button>
-  <button onclick="location.href='index.html'" class="cloud-btn text-purple-800 font-bold py-3 px-6">
+  <button onclick="location.href='index.html'"class="cloud-btn text-purple-800 font-bold py-3 px-6">
     🏠 홈으로
   </button>
 </div>
 
 <!-- 점수판 -->
 <div class="mb-6">
-  <h3 class="text-xl font-bold mb-3 text-center">📊 점수판 (Round <span id="roundDisplay">1</span>/10)</h3>
+  <h3 class="text-[clamp(1rem, 3vw, 1.3rem)] mb-3 text-center">📊 점수판 (Round <span id="roundDisplay">1</span>/10)</h3>
   <table class="scoreboard w-full">
     <thead>
       <tr>
@@ -172,8 +179,7 @@
     
     <div class="text-center text-gray-500 text-sm">
       🧠 컴퓨터는 항상 최대값을 추구합니다<br>
-      📋 모든 카드를 반드시 사용합니다
-    </div>
+       </div>
   </div>
 </div>
 
@@ -319,7 +325,7 @@ const renderComputerCards = () => {
 const updateUserExpression = () => {
   const display = document.getElementById('userExpression');
   if (userExpression.length === 0) {
-    display.textContent = '(카드를 순서대로 클릭하세요)';
+    display.textContent = '(모든 카드를 클릭해서 수식을 만드세요.)';
   } else {
     display.textContent = userExpression.join(' ');
   }
