@@ -13,7 +13,7 @@
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>넘즐 MINI X6</title>
+<title>넘즐 MINI</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
 .cloud-btn {
@@ -75,7 +75,23 @@
 .current-round {
   background: #fef3c7 !important;
 }
+
+/* 반응형 테이블 */
+@media (max-width: 768px) {
+.scoreboard {
+font-size: 14px;
+}
+.scoreboard th, .scoreboard td {
+padding: 4px 2px;
+}
+.number-card, .operator-card {
+min-width: 50px;
+font-size: 16px;
+padding: 8px 12px;
+}
+}
 </style>
+
 </head>
 
 <body class="bg-blue-50 min-h-screen p-4">
@@ -83,15 +99,16 @@
 <div class="max-w-7xl mx-auto">
   <div class="bg-white rounded-lg shadow-lg p-4">
 
-
 <!-- 헤더 -->
+
 <div class="text-center mb-6">
   <h1 class="text-3xl text-purple-600 mb-2">🔥 넘즐 MINI</h1>
-  <p class="text-gray-600">가장 작은 숫자를 만드세요! (10라운드 합계가 작을수록 승리)</p>
-  <p class="text-sm text-gray-500">📋 모든 카드 사용 필수 | ➕➖✖️➗ 모든 연산자 사용 | 💡 음수 허용 (고학년용)</p>
+  <p class="text-gray-600">가장 작은 숫자를 만드세요! (<span id="maxRoundsDisplay">10</span>라운드 합계가 작을수록 승리)</p>
+  <p class="text-sm text-gray-500">📋 모든 카드 사용 필수 | ➕➖✖️➗ 모든 연산자 사용 | 🔢 나누기 결과는 정수로 반올림 | 💡 음수 허용</p>
 </div>
 
 <!-- 제어 버튼 -->
+
 <div class="text-center mb-6">
   <button onclick="restartGame()" class="cloud-btn text-green-800 font-bold py-3 px-6 mr-4">
     🔄 다시하기
@@ -102,83 +119,92 @@
 </div>
 
 <!-- 점수판 -->
+
 <div class="mb-6">
-  <h3 class="text-xl font-bold mb-3 text-center">📊 점수판 (Round <span id="roundDisplay">1</span>/10) - 작을수록 좋음!</h3>
-  <table class="scoreboard w-full">
-    <thead>
-      <tr>
-        <th>플레이어</th>
-        <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
-        <th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
-        <th>총점</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="bg-blue-100 text-left pl-2">사용자</td>
-        <td id="userR1">-</td><td id="userR2">-</td><td id="userR3">-</td><td id="userR4">-</td><td id="userR5">-</td>
-        <td id="userR6">-</td><td id="userR7">-</td><td id="userR8">-</td><td id="userR9">-</td><td id="userR10">-</td>
-        <td id="userTotal" class="bg-blue-200">0</td>
-      </tr>
-      <tr>
-        <td class="bg-red-100 text-left pl-2">컴퓨터</td>
-        <td id="compR1">-</td><td id="compR2">-</td><td id="compR3">-</td><td id="compR4">-</td><td id="compR5">-</td>
-        <td id="compR6">-</td><td id="compR7">-</td><td id="compR8">-</td><td id="compR9">-</td><td id="compR10">-</td>
-        <td id="compTotal" class="bg-red-200">0</td>
-      </tr>
-    </tbody>
-  </table>
+  <h3 class="text-xl font-bold mb-3 text-center">📊 점수판 (Round <span id="roundDisplay">1</span>/<span id="maxRoundsInScoreboard">10</span>) - 작을수록 좋음!</h3>
+  <div class="overflow-x-auto">
+    <table class="scoreboard w-full" id="scoreboardTable">
+      <thead>
+        <tr id="scoreboardHeader">
+          <th>플레이어</th>
+          <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th>
+          <th>6</th><th>7</th><th>8</th><th>9</th><th>10</th>
+          <th>총점</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="bg-blue-100 text-left pl-2">사용자</td>
+          <td id="userR1">-</td><td id="userR2">-</td><td id="userR3">-</td><td id="userR4">-</td><td id="userR5">-</td>
+          <td id="userR6">-</td><td id="userR7">-</td><td id="userR8">-</td><td id="userR9">-</td><td id="userR10">-</td>
+          <td id="userTotal" class="bg-blue-200">0</td>
+        </tr>
+        <tr>
+          <td class="bg-red-100 text-left pl-2">컴퓨터</td>
+          <td id="compR1">-</td><td id="compR2">-</td><td id="compR3">-</td><td id="compR4">-</td><td id="compR5">-</td>
+          <td id="compR6">-</td><td id="compR7">-</td><td id="compR8">-</td><td id="compR9">-</td><td id="compR10">-</td>
+          <td id="compTotal" class="bg-red-200">0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <!-- 게임 영역 -->
+
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-  
+
   <!-- 사용자 영역 -->
+
   <div class="bg-white border-l-4 border-blue-500 rounded-lg p-4 shadow">
     <h2 class="text-xl font-bold mb-4 text-blue-600">👤 사용자</h2>
-    
-    <div class="mb-4">
-      <div id="cardsArea" class="flex flex-wrap gap-2 justify-center"></div>
-    </div>
-    
-    <div class="mb-4">
-      <div id="userExpression" class="bg-gray-50 p-3 border-2 border-blue-300 rounded-lg text-lg text-center min-h-[60px] flex items-center justify-center">
-        (카드를 순서대로 클릭하세요)
-      </div>
-    </div>
-    
-    <div id="actionButtons" class="flex gap-2">
-      <button onclick="submitExpression()" class="cloud-btn flex-1 text-green-800 font-bold py-2 px-4">
-        ✅ 제출
-      </button>
-      <button onclick="resetExpression()" class="cloud-btn flex-1 text-gray-800 font-bold py-2 px-4">
-        🔄 초기화
-      </button>
-    </div>
+
+<div class="mb-4">
+  <div id="cardsArea" class="flex flex-wrap gap-2 justify-center"></div>
+</div>
+
+<div class="mb-4">
+  <div id="userExpression" class="bg-gray-50 p-3 border-2 border-blue-300 rounded-lg text-lg text-center min-h-[60px] flex items-center justify-center">
+    (카드를 순서대로 클릭하세요)
+  </div>
+</div>
+
+<div id="actionButtons" class="flex gap-2">
+  <button onclick="submitExpression()" class="cloud-btn flex-1 text-green-800 font-bold py-2 px-4">
+    ✅ 제출
+  </button>
+  <button onclick="resetExpression()" class="cloud-btn flex-1 text-gray-800 font-bold py-2 px-4">
+    🔄 초기화
+  </button>
+</div>
+
   </div>
 
   <!-- 컴퓨터 영역 -->
+
   <div class="bg-white border-l-4 border-red-500 rounded-lg p-4 shadow">
     <h2 class="text-xl font-bold mb-4 text-red-600">🤖 컴퓨터</h2>
-    
-    <div class="mb-4">
-      <div id="computerCardsArea" class="flex flex-wrap gap-2 justify-center"></div>
-    </div>
-    
-    <div class="mb-4">
-      <div id="computerExpression" class="bg-gray-50 p-3 border-2 border-red-300 rounded-lg text-lg text-center min-h-[60px] flex items-center justify-center">
-        컴퓨터가 생각 중...
-      </div>
-    </div>
-    
-    <div class="text-center text-gray-500 text-sm">
-      🧠 컴퓨터는 항상 최소값을 추구합니다<br>
-      📋 모든 카드를 반드시 사용합니다
-    </div>
+
+<div class="mb-4">
+  <div id="computerCardsArea" class="flex flex-wrap gap-2 justify-center"></div>
+</div>
+
+<div class="mb-4">
+  <div id="computerExpression" class="bg-gray-50 p-3 border-2 border-red-300 rounded-lg text-lg text-center min-h-[60px] flex items-center justify-center">
+    컴퓨터가 생각 중...
+  </div>
+</div>
+
+<div class="text-center text-gray-500 text-sm">
+  🧠 컴퓨터는 항상 최소값을 추구합니다<br>
+  📋 모든 카드를 반드시 사용합니다
+</div>
+
   </div>
 </div>
 
 <!-- 라운드 결과 -->
+
 <div id="roundResultArea" class="hidden text-center mt-6 p-4 bg-yellow-50 rounded-lg">
   <div id="roundResultText" class="text-lg font-bold mb-2"></div>
   <button onclick="nextRound()" class="cloud-btn text-blue-800 font-bold py-3 px-8">
@@ -187,18 +213,24 @@
 </div>
 
 <!-- 최종 결과 -->
+
 <div id="resultArea" class="hidden text-center mt-6 p-6 bg-gray-100 rounded-lg">
   <h2 class="text-2xl font-bold mb-4">🎉 게임 종료!</h2>
   <div id="finalResult" class="text-xl mb-4"></div>
 </div>
 
-
   </div>
 </div>
 
 <script>
+// 게임 설정
+const getMaxRounds = () => {
+  return window.innerWidth < 768 ? 6 : 10; // 모바일은 6라운드, 데스크톱은 10라운드
+};
+
 // 게임 상태
 let currentRound = 1;
+let maxRounds = getMaxRounds();
 let userTotalScore = 0;
 let computerTotalScore = 0;
 let userRoundScores = [];
@@ -209,6 +241,52 @@ let computerCards = [];
 let roundCompleted = false;
 let usedCardIndices = [];
 let gameEnded = false;
+
+// 수식 안전 계산 함수 (eval 대신 사용)
+const safeCalculate = (expression) => {
+  try {
+    // ×를 *, ÷를 /로 변환
+    const calcExpr = expression.replace(/×/g, '*').replace(/÷/g, '/');
+    
+    // 간단한 수식 파싱 및 계산
+    const tokens = calcExpr.split(' ');
+    let result = parseFloat(tokens[0]);
+    
+    for (let i = 1; i < tokens.length; i += 2) {
+      const operator = tokens[i];
+      const operand = parseFloat(tokens[i + 1]);
+      
+      if (isNaN(operand)) {
+        throw new Error('Invalid operand');
+      }
+      
+      switch (operator) {
+        case '+':
+          result += operand;
+          break;
+        case '-':
+          result -= operand;
+          break;
+        case '*':
+          result *= operand;
+          break;
+        case '/':
+          if (operand === 0) {
+            throw new Error('Division by zero');
+          }
+          result /= operand;
+          break;
+        default:
+          throw new Error('Invalid operator');
+      }
+    }
+    
+    return result;
+  } catch (error) {
+    console.error('Calculation error:', error);
+    return NaN;
+  }
+};
 
 // 카드덱 생성 (MINI용 - 작은 수 만들기, 카드덱 반대)
 const createUserNumberDeck = () => {
@@ -266,13 +344,48 @@ const processResult = (value) => {
   return Math.round(value); // 음수 허용, 소수점만 반올림
 };
 
+// 반응형 점수판 설정
+const setupScoreboard = () => {
+  maxRounds = getMaxRounds();
+  document.getElementById('maxRoundsDisplay').textContent = maxRounds;
+  document.getElementById('maxRoundsInScoreboard').textContent = maxRounds;
+  
+  // 모바일에서는 7-10 라운드 컬럼 숨기기
+  if (maxRounds === 6) {
+    for (let i = 7; i <= 10; i++) {
+      // 헤더 숨기기
+      const headerCells = document.querySelectorAll(`#scoreboardHeader th:nth-child(${i + 1})`);
+      headerCells.forEach(cell => cell.style.display = 'none');
+      
+      // 데이터 셀 숨기기
+      const dataCells = document.querySelectorAll(`#userR${i}, #compR${i}`);
+      dataCells.forEach(cell => cell.style.display = 'none');
+    }
+  } else {
+    // 데스크톱에서는 모든 컬럼 표시
+    for (let i = 7; i <= 10; i++) {
+      const headerCells = document.querySelectorAll(`#scoreboardHeader th:nth-child(${i + 1})`);
+      headerCells.forEach(cell => cell.style.display = 'table-cell');
+      
+      const dataCells = document.querySelectorAll(`#userR${i}, #compR${i}`);
+      dataCells.forEach(cell => cell.style.display = 'table-cell');
+    }
+  }
+};
+
 // 점수판 초기화
 const resetScoreboard = () => {
   for (let i = 1; i <= 10; i++) {
-    document.getElementById(`userR${i}`).textContent = '-';
-    document.getElementById(`compR${i}`).textContent = '-';
-    document.getElementById(`userR${i}`).classList.remove('current-round');
-    document.getElementById(`compR${i}`).classList.remove('current-round');
+    const userCell = document.getElementById(`userR${i}`);
+    const compCell = document.getElementById(`compR${i}`);
+    if (userCell) {
+      userCell.textContent = '-';
+      userCell.classList.remove('current-round');
+    }
+    if (compCell) {
+      compCell.textContent = '-';
+      compCell.classList.remove('current-round');
+    }
   }
   document.getElementById('userTotal').textContent = '0';
   document.getElementById('compTotal').textContent = '0';
@@ -345,13 +458,13 @@ const findBestExpression = (cards) => {
               if (x !== y) {
                 try {
                   const expr = `${numbers[i]} ${operators[x]} ${numbers[j]} ${operators[y]} ${numbers[k]}`;
-                  // ×를 *, ÷를 /로 변환하여 계산
-                  const calcExpr = expr.replace(/×/g, '*').replace(/÷/g, '/');
-                  const rawVal = eval(calcExpr);
-                  const val = processResult(rawVal);
-                  if (val < bestValue) {
-                    bestValue = val;
-                    bestExpr = expr;
+                  const rawVal = safeCalculate(expr);
+                  if (!isNaN(rawVal)) {
+                    const val = processResult(rawVal);
+                    if (val < bestValue) {
+                      bestValue = val;
+                      bestExpr = expr;
+                    }
                   }
                 } catch {}
               }
@@ -362,53 +475,64 @@ const findBestExpression = (cards) => {
     }
   }
 
-  return { expr: bestExpr, value: bestValue };
+  return { expr: bestExpr, value: bestValue, rawValue: safeCalculate(bestExpr) };
 };
 
 // 점수판 업데이트
 const updateScoreboard = () => {
   // 하이라이트 제거
   for (let i = 1; i <= 10; i++) {
-    document.getElementById(`userR${i}`).classList.remove('current-round');
-    document.getElementById(`compR${i}`).classList.remove('current-round');
+    const userCell = document.getElementById(`userR${i}`);
+    const compCell = document.getElementById(`compR${i}`);
+    if (userCell) userCell.classList.remove('current-round');
+    if (compCell) compCell.classList.remove('current-round');
   }
 
   // 점수 업데이트
   for (let i = 0; i < userRoundScores.length; i++) {
-    document.getElementById(`userR${i + 1}`).textContent = userRoundScores[i];
+    const userCell = document.getElementById(`userR${i + 1}`);
+    if (userCell) userCell.textContent = userRoundScores[i];
   }
   for (let i = 0; i < computerRoundScores.length; i++) {
-    document.getElementById(`compR${i + 1}`).textContent = computerRoundScores[i];
+    const compCell = document.getElementById(`compR${i + 1}`);
+    if (compCell) compCell.textContent = computerRoundScores[i];
   }
   
   document.getElementById('userTotal').textContent = userTotalScore;
   document.getElementById('compTotal').textContent = computerTotalScore;
 
   // 현재 라운드 하이라이트
-  if (currentRound <= 10) {
-    document.getElementById(`userR${currentRound}`).classList.add('current-round');
-    document.getElementById(`compR${currentRound}`).classList.add('current-round');
+  if (currentRound <= maxRounds) {
+    const userCell = document.getElementById(`userR${currentRound}`);
+    const compCell = document.getElementById(`compR${currentRound}`);
+    if (userCell) userCell.classList.add('current-round');
+    if (compCell) compCell.classList.add('current-round');
   }
 };
 
-// 라운드 결과 표시
-const showRoundResult = (userVal, computerVal) => {
-  let resultText = `라운드 ${currentRound}: 사용자 ${userVal} vs 컴퓨터 ${computerVal}`;
-  if (userVal < computerVal) {
-    resultText += ' → 사용자 승리! 🎉';
-  } else if (computerVal < userVal) {
-    resultText += ' → 컴퓨터 승리 😔';
-  } else {
-    resultText += ' → 무승부 🤝';
-  }
+// 라운드 결과 표시 (점수 정보 제거)
+const showRoundResult = (userVal, userRaw, computerVal, computerRaw) => {
+  let resultText = `라운드 ${currentRound} 완료!`;
   
   document.getElementById('roundResultText').textContent = resultText;
   document.getElementById('roundResultArea').classList.remove('hidden');
 };
 
+// 결과를 수식 입력창에 표시하는 함수
+const showCalculationResult = (isUser, expression, rawValue) => {
+  if (isUser) {
+    const userExprDiv = document.getElementById('userExpression');
+    userExprDiv.textContent = `${expression} = ${rawValue.toFixed(2)}`;
+  } else {
+    const computerExprDiv = document.getElementById('computerExpression');
+    computerExprDiv.textContent = `${expression} = ${rawValue.toFixed(2)}`;
+  }
+};
+
 // 게임 시작
 const startGame = () => {
   currentRound = 1;
+  maxRounds = getMaxRounds();
   userTotalScore = 0;
   computerTotalScore = 0;
   userRoundScores = [];
@@ -418,6 +542,7 @@ const startGame = () => {
   usedCardIndices = [];
   gameEnded = false;
 
+  setupScoreboard();
   resetScoreboard();
   userCards = generateUserCards();
   computerCards = generateComputerCards();
@@ -445,13 +570,19 @@ const submitExpression = () => {
   
   try {
     const exprString = userExpression.join(' ');
-    // ×를 *, ÷를 /로 변환하여 계산
-    const calcExpr = exprString.replace(/×/g, '*').replace(/÷/g, '/');
-    const rawUserVal = eval(calcExpr);
+    const rawUserVal = safeCalculate(exprString);
+    
+    if (isNaN(rawUserVal)) {
+      return alert('올바른 수식을 입력해주세요!');
+    }
+    
     const userVal = processResult(rawUserVal);
     
-    const { expr: computerExpr, value: computerVal } = findBestExpression(computerCards);
-    document.getElementById('computerExpression').textContent = computerExpr;
+    const { expr: computerExpr, value: computerVal, rawValue: rawComputerVal } = findBestExpression(computerCards);
+
+    // 수식 입력창에 결과 표시
+    showCalculationResult(true, exprString, rawUserVal);
+    showCalculationResult(false, computerExpr, rawComputerVal);
 
     userRoundScores.push(userVal);
     computerRoundScores.push(computerVal);
@@ -461,9 +592,9 @@ const submitExpression = () => {
     updateScoreboard();
     roundCompleted = true;
     document.getElementById('actionButtons').classList.add('hidden');
-    showRoundResult(userVal, computerVal);
+    showRoundResult(userVal, rawUserVal, computerVal, rawComputerVal);
 
-    if (currentRound >= 10) {
+    if (currentRound >= maxRounds) {
       setTimeout(() => {
         gameEnded = true;
         let resultText = '';
@@ -525,6 +656,15 @@ const resetExpression = () => {
     document.querySelector('#actionButtons button').style.background = '';
   }
 };
+
+// 창 크기 변경 시 재설정
+window.addEventListener('resize', () => {
+  const newMaxRounds = getMaxRounds();
+  if (newMaxRounds !== maxRounds && !gameEnded) {
+    // 게임 진행 중 화면 크기가 변경되면 점수판만 재설정
+    setupScoreboard();
+  }
+});
 
 // 게임 시작
 window.onload = () => startGame();
