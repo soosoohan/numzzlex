@@ -82,4 +82,3 @@
 
 - Created and Developed by Soosoo Han  
 <p>© 2025 Soosoo Han. All rights reserved.<br>
-No part of this game may be copied, distributed, or modified without permission.</p>
