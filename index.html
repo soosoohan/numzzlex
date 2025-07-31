@@ -2,7 +2,7 @@
 
 <html lang="ko">
 <head>
-<!-- Google tag (gtag.js) -->
+ <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,10 +10,9 @@
       gtag('js', new Date());
       gtag('config', 'G-4YZHC1G9FN');
     </script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>넘즐엑스인덱스</title>
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>넘즐X 인덱스</title>
     <style>
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
@@ -188,14 +187,14 @@
         box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
 .square-button {
-            width: 100px;
-            height: 100px;
-            background: #2e8b8b;
+            width: 250px;
+            height: 45px;
+            background-color: #FFB3D9; /* 연분홍 */
             color: white;
             border: none;
             border-radius: 12px; /* 둥근 모서리 */
             cursor: pointer;
-            font-size: clamp(1rem, 3vw, 1.3rem);
+            font-size: 1.1rem; /*크기 고정 */
             font-weight: bold;
             display: flex;
             flex-direction: column;
@@ -218,12 +217,14 @@
     }
 .credits {
         margin-top: 50px;
-        font-size: 0.85em;
-        color: #A65A5A;
-        background-color: #FFE8CD;
+        font-size: 0.9em;
+        color: white;
+        background-color:#2e8b8b;
         padding: 20px;
         border-radius: 10px;
-    }
+        width: 300px;
+        justify-content: center;
+}
     /* 게임 허브 화면 */
     
 
@@ -296,10 +297,6 @@
             padding: 15px;
         }
 
-        .credits-area {
-            bottom: 5px;
-            right: 5px;
-        }
     }
 
     /* 매우 작은 화면 */
@@ -377,7 +374,7 @@
         <h1 class="chalk-text main-title">넘즐X</h1>
         
         <div class="game-description chalk-text" id="korean-description">
-            <h3>🎮 게임 소개</h3>
+            <h3>숫자카드와 연산기호 카드로 수식을 만드세요.</h3>
             <p>넘즐 X (NUMZZLE X)=넘버(NUMBER) + 퍼즐(PUZZLE)+X</p>
             <p>넘즐은 수학 감각과 창의력을 발휘해야 하는 재미있는 계산 게임입니다.<br>
                한 라운드마다 주어진 카드로 최대값이 되는 수식을 만들고, 10라운드가 끝난 후 더 큰 숫자를 을 만든 사람이 점수를 얻습니다.</p>
@@ -418,7 +415,7 @@
         </div>
 
         <div class="game-description chalk-text hidden" id="english-description">
-            <h3>🎮 Game Overview</h3>
+            <h3>Create expressions with given cards.</h3>
             <p>NUMZZLE X = NUMBER + PUZZLE +X</p>
             <p>Numzzle X is a fun and strategic math game that challenges your sense of numbers and creativity.</p>
            
@@ -459,17 +456,12 @@
     
     <!-- 게임 허브 화면 -->
     
-<div class="credits">
-        
+
+<div class="credits">       
 <button class="square-button" onclick="location.href='https://soosoohan.github.io/soosooland/'">
-    <div>재미있게</div>
-    <div>공부하는</div>
-    <div>수수랜드</div>
+    재미있게 공부하는 수수랜드
 </button>
-<p>
-        © 2025 Soosoo Han.<br> 
-        All rights reserved.<br>
-        </p>
+<p> © 2025 Soosoo Han. All rights reserved.</p>
     </div>
 </div>
 </div>
