@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://numzzlex.vercel.app/sitemap.xml
