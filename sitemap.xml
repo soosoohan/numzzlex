@@ -1,7 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://numzzlex.vercel.app/</loc>
+    <loc>https://soosooland.com/numzzlex</loc>
     <lastmod>2025-10-08</lastmod>
+   <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX1.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX2.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX3.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX4.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX5.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX6.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX1.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX2.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX3.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX4.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX5.html</loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://soosooland.com/ NZX6.html </loc>
+    <lastmod>2025-10-08</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
