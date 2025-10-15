@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://numzzlex.vercel.app/sitemap.xml
+Sitemap: https://soosooland.com/numzzlex/sitemap.xml
