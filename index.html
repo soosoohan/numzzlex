@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-4YZHC1G9FN');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numzzlex - Math Card Puzzle Game | Soosooland</title>
+    <!-- SEO Meta Tags -->
+<meta name="description" content="Create math equations using number and operator cards. Compete against computer to make maximum or minimum values. Strategic math puzzle game.">
+<meta name="keywords" content="수수랜드, 수학 게임, 계산 게임, 연산 게임, 넘즐, numzzlex, math card game, number puzzle, calculation game, math strategy, educational game">
+<meta name="author" content="Soosooland">
+
+    <!-- Open Graph -->
+<meta property="og:title" content="Numzzlex - Math Card Puzzle Game">
+<meta property="og:description" content="Create equations to make max or min values. Play against computer in this strategic math game.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://soosooland.com/numzzlex">
+<meta property="og:image" content="https://soosooland.com/images/numzzle.jpeg">
+<meta property="og:site_name" content="Soosooland">
+<link rel="canonical" href="https://soosooland.com/numzzlex/">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "Numzzlex",
+  "description": "Math card puzzle game to create maximum or minimum values",
+  "url": "https://soosooland.com/numzzlex",
+  "genre": ["Educational", "Strategy"],
+  "gamePlatform": "Web browser",
+  "playMode": "SinglePlayer",
+  "inLanguage": ["en", "ko"]
+}
+</script>
+ <style>
+        @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+  * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Pretendard', sans-serif;
+        background: #2e8b8b;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .blackboard {
+        width: 100%;
+        max-width: 100vw;
+        height: 100vh;
+        background: #2e8b8b;
+        position: relative;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .chalk-text {
+        color: #f0f8ff;
+        font-family: 'Pretendard', sans-serif;
+    }
+
+    /* 넘즐 메인 화면 */
+    .numzzle-main {
+        transition: all 0.5s ease;
+        position: relative;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-title {
+        font-size: clamp(1.3rem, 3.7vw, 1.9rem);
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .language-toggle {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255,255,255,0.9);
+        padding: 8px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 100;
+    }
+
+    .language-button {
+        background: #2e8b8b;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        margin: 2px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Pretendard', sans-serif;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+        transition: all 0.3s ease;
+    }
+
+    .language-button:hover {
+        background: #20b2aa;
+    }
+
+    .language-button.active {
+        background: #ff69b4;
+    }
+
+    .games-hub-btn {
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        background: rgba(255,255,255,0.9);
+        color: #2e8b8b;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 12px;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-family: 'Pretendard', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 100;
+    }
+
+    .games-hub-btn:hover {
+        background: #f0f8ff;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .game-description {
+        flex: 1;
+        color: #f0f8ff;
+        font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        line-height: 1.4;
+        margin-top: 20px;
+        padding: 0 20px;
+        max-width: 100%;
+    }
+
+    .game-description h3 {
+        color: #add8e6;
+        margin-bottom: 15px;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        border-bottom: 2px solid #add8e6;
+        padding-bottom: 8px;
+    }
+
+    .game-description p {
+        margin-bottom: 15px;
+        word-wrap: break-word;
+    }
+
+    .game-description ul {
+        margin-bottom: 15px;
+        padding-left: 20px;
+    }
+
+    .game-description li {
+        margin-bottom: 8px;
+        word-wrap: break-word;
+    }
+
+    .main-game-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+    .main-game-button {
+        background: rgba(255,255,255,0.9);
+        color: #2e8b8b;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        font-family: 'Pretendard', sans-serif;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        flex: 1;
+        min-width: 120px;
+        max-width: 200px;
+    }
+
+    .main-game-button:hover {
+        background: #f0f8ff;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+.square-button {
+            width: 250px;
+            height: 45px;
+            background-color: #FFB3D9; /* 연분홍 */
+            color: white;
+            border: none;
+            border-radius: 12px; /* 둥근 모서리 */
+            cursor: pointer;
+            font-size: 1.1rem; /*크기 고정 */
+            font-weight: bold;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.2;
+            margin: 8px;
+            transition: all 0.3s ease;
+            font-family: Arial, sans-serif;
+        }
+
+    .square-button:hover {
+        background-color: #FF8FAB; /* 호버 시 진한 분홍 */
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .square-button:active {
+        transform: scale(0.95);
+    }
+.credits {
+        margin-top: 50px;
+        font-size: 0.9em;
+        color: white;
+        background-color:#2e8b8b;
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        justify-content: center;
+}
+    /* 게임 허브 화면 */
+    
+
+    .credits-area {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        color: #f0f8ff;
+        font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+        line-height: 1.3;
+        text-align: right;
+        z-index: 50;
+    }
+
+    .credits-item {
+        margin-bottom: 3px;
+        transform: rotate(-1deg);
+    }
+
+    .credits-item:nth-child(2) {
+        transform: rotate(0.5deg);
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    /* 모바일 최적화 */
+    @media (max-width: 768px) {
+        .blackboard {
+            padding: 10px;
+        }
+
+        .language-toggle {
+            top: 10px;
+            right: 10px;
+            padding: 6px;
+        }
+
+        .games-hub-btn {
+            top: 60px;
+            right: 10px;
+            padding: 8px 12px;
+        }
+
+        .game-description {
+            padding: 0 10px;
+            margin-top: 15px;
+        }
+
+        .main-game-buttons {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+        }
+
+        .main-game-button {
+            width: 100%;
+            max-width: 280px;
+            padding: 15px;
+        }
+
+        .games-grid {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .game-card {
+            padding: 15px;
+        }
+
+    }
+
+    /* 매우 작은 화면 */
+    @media (max-width: 480px) {
+        .main-title {
+            margin-top: 60px;
+        }
+
+        .language-toggle {
+            position: static;
+            float: right;
+            margin-bottom: 30px;
+        }
+
+        .games-hub-btn {
+            position: static;
+            float: right;
+            clear: both;
+            margin-bottom: 20px;
+        }
+
+        .game-description {
+            clear: both;
+            padding-top: 20px;
+        }
+    }
+
+    /* 가로 모드 모바일 */
+    @media (max-height: 500px) and (orientation: landscape) {
+        .blackboard {
+            height: auto;
+            min-height: 100vh;
+        }
+
+        .main-title {
+            font-size: 2rem;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .game-description {
+            font-size: 0.9rem;
+            line-height: 1.3;
+        }
+
+        .main-game-buttons {
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 10px;
+        }
+
+        .main-game-button {
+            flex: 1;
+            min-width: 100px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
+
+</head>
+<body>
+    <div class="blackboard">
+        <!-- 넘즐 메인 화면 -->
+        <div class="numzzle-main" id="numzzle-main">
+            <div class="language-toggle">
+                <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
+                <button class="language-button" onclick="toggleLanguage('en')">English</button>
+            </div>
+
+  
+  
+        <h1 class="chalk-text main-title">넘즐X</h1>
+        
+        <div class="game-description chalk-text" id="korean-description">
+            <h3>숫자카드와 연산기호 카드로 수식을 만드세요.</h3>
+            <p>넘즐 X (NUMZZLE X)=넘버(NUMBER) + 퍼즐(PUZZLE)+X</p>
+            <p>넘즐은 수학 감각과 창의력을 발휘해야 하는 재미있는 계산 게임입니다.<br>
+               한 라운드마다 주어진 카드로 최대값이 되는 수식을 만들고, 10라운드가 끝난 후 더 큰 숫자를 을 만든 사람이 점수를 얻습니다.</p>
+
+            <h3>📋 게임 규칙</h3>
+            <ul>
+    <li> npc와 사용자는 서로 다른   숫자카드와 연산카드를 받습니다.</li>
+    <li> npc 와 사용자는 주어진 카드를 모두 사용해야 합니다.</li>
+    <li>주어진 카드로 수식을 만들어 최대값을 만드는 게임은 넘즐초 맥스, ,넘즐잼 맥스, 넘즐 맥스가 있습니다.</li>
+    <li>주어진 카드로 수식을 만들어 최소값을 만드는 게임은 넘즐초 미니, ,넘즐잼 미니, 넘즐 미니가 있습니다.</li>
+    <li>실수했을 경우 초기화 버튼으로 수식을 다시 만들 수 있습니다.</li>
+    <li>수식의 결과는 각 라운드의 점수가 됩니다.</li>           
+          <li>총 10라운드를 진행하며, 멕시 게임은 누적 점수가 더 높은 쪽이 승리합니다!</li>
+     <li>총 10라운드를 진행하며, 미니 게임은 누적 점수가 더 낮은 쪽이 승리합니다!</li>
+                            </ul>
+
+            <div class="main-game-buttons">
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X1-ko.html'">
+                    넘즐초 맥스
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X2-ko.html'">
+                    넘즐잼 맥스
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X3-ko.html'">
+                    넘즐 맥스
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X4-ko.html'">
+                  넘즐초 미니
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X5-ko.html'">
+                   넘즐잼 미니
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X6-ko.html'">
+                    넘즐 미니
+                </button>
+                        
+</div>
+        </div>
+
+        <div class="game-description chalk-text hidden" id="english-description">
+            <h3>Create expressions with given cards.</h3>
+            <p>NUMZZLE X = NUMBER + PUZZLE +X</p>
+            <p>Numzzle X is a fun and strategic math game that challenges your sense of numbers and creativity.</p>
+           
+            <h3>📋 Game Rules</h3>
+            <ul>
+<li>NPC and user receive different number cards and operation cards.</li>
+<li>Users and computers must use all given cards.</li>
+<li>Games where you create expressions with given cards to make the maximum value are Number Cho X Max, Number Jam X Max, and Number X Max.</li>
+<li>Games where you create expressions with given cards to make the minimum value are Number Cho X Mini, Number Jam X Mini, and Number X Mini.</li>
+<li>If you make a mistake, you can use the reset button to recreate the expression.</li>
+<li>The result of the expression becomes the score for each round.</li>
+<li>A total of 10 rounds are played, and in Maxi games, the side with the higher cumulative score wins!</li>
+<li>A total of 10 rounds are played, and in Mini games, the side with the lower cumulative score wins!</li>
+
+
+            </ul>
+<div class="main-game-buttons">
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X1-en.html'">
+                    NUMZZLE CHO MAX
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X2-en.html'">
+                    NUMZZLE JAM MAX
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X3-en.html'">
+                   NUMZZLE MAX
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X4-en.html'">
+                  NUMZZLE CHO mini
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X5-en.html'">
+                   NUMZZLE JAM mini
+                </button>
+                <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X6-en.html'">
+                    NUMZZLE mini
+               </button>
+            </div>
+        </div>
+    
+    <!-- 게임 허브 화면 -->
+    
+
+<div class="credits">       
+<button class="square-button" onclick="location.href='https://soosooland.com'">
+    즐거운 퍼즐, 수수랜드
+</button>
+<p> © 2025 Soosoo Han. All rights reserved.</p>
+    </div>
+</div>
+</div>
+
+<script>
+    
+
+    function toggleLanguage(lang) {
+        const koreanDesc = document.getElementById('korean-description');
+        const englishDesc = document.getElementById('english-description');
+        const buttons = document.querySelectorAll('.language-button');
+        
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
+        if (lang === 'ko') {
+            koreanDesc.classList.remove('hidden');
+            englishDesc.classList.add('hidden');
+            buttons[0].classList.add('active');
+        } else {
+            koreanDesc.classList.add('hidden');
+            englishDesc.classList.remove('hidden');
+            buttons[1].classList.add('active');
+        }
+    }
+
+    function showGamesHub() {
+        const numzzleMain = document.getElementById('numzzle-main');
+        const gamesHub = document.getElementById('games-hub');
+        
+        numzzleMain.style.display = 'none';
+        gamesHub.classList.add('active');
+    }
+
+    // 뒤로가기 기능 추가
+    window.addEventListener('popstate', function(event) {
+        const numzzleMain = document.getElementById('numzzle-main');
+        const gamesHub = document.getElementById('games-hub');
+        
+        if (gamesHub.classList.contains('active')) {
+            numzzleMain.style.display = 'block';
+            gamesHub.classList.remove('active');
+        }
+    });
+</script>
+
+
+</body>
+</html>
