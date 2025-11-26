@@ -53,21 +53,15 @@
         font-family: 'Pretendard', sans-serif;
         background: #145454;
         min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-    }
+        }
 
     .blackboard {
-        width: 100%;
-        max-width: 750px;
-        height: 100vh;
-        background: #145454;
-        position: relative;
-        overflow-y: auto;
-        padding: 20px;
-    }
+        width:100%;
+        min-height:100dvh;
+        display:flex;
+        flex-direction:column;
+        position:relative
+        }
 
     .chalk-text {
         color: #f0f8ff;
@@ -76,13 +70,10 @@
 
     /* 넘즐 메인 화면 */
     .numzzle-main {
-        transition: all 0.5s ease;
-        position: relative;
-        min-height: 100%;
-        display: flex;
-        flex-direction: column;
+        position:relative;
+        padding:20px;
+        text-align:center
     }
-
     .main-title {
         font-size: clamp(1.3rem, 3.7vw, 1.9rem);
         font-weight: bold;
@@ -355,7 +346,7 @@
 
   
   
-        <h1 class="chalk-text main-title">넘즐X</h1>
+        <h1 class="chalk-text main-title">넘즐X NUMZZLEX</h1>
         
         <div class="game-description chalk-text" id="korean-description">
             <h3>숫자카드와 연산기호 카드로 수식을 만드세요.</h3>
