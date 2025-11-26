@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4YZHC1G9FN"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-4YZHC1G9FN');
-</script>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Numzzlex - Math Card Puzzle Game | Soosooland</title>
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numzzlex - Math Card Puzzle Game | Soosooland</title>
     <!-- SEO Meta Tags -->
 <meta name="description" content="Create math equations using number and operator cards. Compete against computer to make maximum or minimum values. Strategic math puzzle game.">
 <meta name="keywords" content="수수랜드, 수학 게임, 계산 게임, 연산 게임, 넘즐, numzzlex, math card game, number puzzle, calculation game, math strategy, educational game">
 <meta name="author" content="Soosooland">
 
-    <!-- Open Graph -->
+<!-- Open Graph -->
 <meta property="og:title" content="Numzzlex - Math Card Puzzle Game">
 <meta property="og:description" content="Create equations to make max or min values. Play against computer in this strategic math game.">
 <meta property="og:type" content="website">
@@ -26,7 +26,6 @@
 <meta property="og:site_name" content="Soosooland">
 <link rel="canonical" href="https://soosooland.com/numzzlex/">
 <link rel="stylesheet" href="https://soosooland.com/css/protection.css">
-
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -53,15 +52,21 @@
         font-family: 'Pretendard', sans-serif;
         background: #145454;
         min-height: 100vh;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
 
     .blackboard {
-        width:100%;
-        min-height:100dvh;
-        display:flex;
-        flex-direction:column;
-        position:relative
-        }
+        width: 100%;
+        max-width: 750px;
+        height: 100vh;
+        background: #145454;
+        position: relative;
+        overflow-y: auto;
+        padding: 20px;
+    }
 
     .chalk-text {
         color: #f0f8ff;
@@ -70,10 +75,13 @@
 
     /* 넘즐 메인 화면 */
     .numzzle-main {
-        position:relative;
-        padding:20px;
-        text-align:center
+        transition: all 0.5s ease;
+        position: relative;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
     }
+
     .main-title {
         font-size: clamp(1.3rem, 3.7vw, 1.9rem);
         font-weight: bold;
@@ -203,7 +211,7 @@
         transform: translateY(-3px);
         box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
-
+    
   .back-button {
         position: absolute;
         top: 20px;
@@ -218,7 +226,6 @@
         transition: all 0.3s ease;
         z-index: 100;
     }
-
     .back-button:hover {
         background-color: #FF9494;
         color: white;
@@ -276,15 +283,31 @@
 
     /* 매우 작은 화면 */
     @media (max-width: 480px) {
+    .back-button {
+        top: 10px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 0.9em;
+    }
+    
+    .language-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 6px;
+        max-width: 150px; /* 최대 너비 제한 */
+    }
+    
+    .language-button {
+        padding: 5px 8px;
+        font-size: 0.85rem;
+        white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+    }
+
+
         .main-title {
             margin-top: 60px;
         }
 
-        .language-toggle {
-            position: static;
-            float: right;
-            margin-bottom: 30px;
-        }
 
         .games-hub-btn {
             position: static;
@@ -334,9 +357,10 @@
 </style>
 </head>
 <body>
-   <button class="back-button" onclick="location.href='https://soosooland.com/'">
+  <button class="back-button" onclick="location.href='https://soosooland.com/'">
     Soosooland </button>
-    <div class="blackboard">
+
+       <div class="blackboard">
         <!-- 넘즐 메인 화면 -->
         <div class="numzzle-main" id="numzzle-main">
             <div class="language-toggle">
@@ -345,14 +369,15 @@
             </div>
 
   
-  
-        <h1 class="chalk-text main-title">넘즐X NUMZZLEX</h1>
+  <div class="game-description chalk-text" id="korean-description">
         
-        <div class="game-description chalk-text" id="korean-description">
-            <h3>숫자카드와 연산기호 카드로 수식을 만드세요.</h3>
+        <h1 class="chalk-text main-title">넘즐X</h1>
+        <h3>숫자카드와 연산기호 카드로 수식을 만드세요.</h3>
             <p>넘즐 X (NUMZZLE X)=넘버(NUMBER) + 퍼즐(PUZZLE)+X</p>
         
-            <h3>📋 게임 규칙</h3>
+                <h3>🎮 게임 소개</h3>
+        <p>넘즐X = 넘버(NUMBER) + 퍼즐(PUZZLE)+X</p>
+                    <h3>📋 게임 규칙</h3>
     <ul>
     <li>npc와 사용자는 서로 다른  숫자카드와 연산카드를 받습니다.</li>
     <li>npc 와 사용자는 주어진 카드를 모두 사용해야 합니다.</li>
@@ -362,13 +387,9 @@
     <li>넘즐초X는 넘즐초보다 쉬우며 덧셈(+)과 뺄셈(-) 연산만 사용합니다.초등학교 2학년 이상이면 게임할 수 있습니다.</li>
     <li>넘즐잼X는 덧셈(+), 뺄셈(-), 곱셈(x) 연산을 사용합니다.초등학교 3학년 이상이면 게임할 수 있습니다.</li>
     <li>넘즐X는 덧셈(+), 뺄셈(-), 곱셈(x), 나눗셈(÷) 연산기호를 사용합니다. 초등학교 4학년 이상이면 게임할 수 있지만 사고력이 필요한 게임입니다. 나눗셈이 있어서 빼야 할지 나눠야 할지 어려워지는 게임이에요.</li>
-
-    
-    
     
 </ul>
-
-            <div class="main-game-buttons">
+      <div class="main-game-buttons">
                 <button class="main-game-button" onclick="location.href='https://soosoofile.vercel.app/X1-ko.html'">
                     넘즐초 맥스
                 </button>
@@ -391,8 +412,8 @@
 </div>
         </div>
 
-        <div class="game-description chalk-text hidden" id="english-description">
-            <h3>Create expressions with given cards.</h3>
+        <div class="game-description chalk-text hidden" id="english-description"><h1 class="chalk-text main-title">NUMZZLEX</h1>
+        <h3>Create expressions with given cards.</h3>
             <p>NUMZZLE X = NUMBER + PUZZLE +X</p>
             <p>Numzzle X is a fun and strategic math game that challenges your sense of numbers and creativity.</p>
            
@@ -431,7 +452,6 @@
                </button>
             </div>
         </div>
-</div>
 </div>
 
 <script>
