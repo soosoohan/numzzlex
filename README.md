@@ -1,3 +1,8 @@
+## ⚠️ Copyright Notice | 저작권 안내 | کاپی رائٹ نوٹس  
+
+All games are registered copyrights. Unauthorized copying or redistribution is prohibited.  
+모든 게임은 저작권 등록된 창작물입니다. 무단 복제 및 배포를 금합니다.  
+تمام گیمز کاپی رائٹ محفوظ ہیں۔ غیر مجاز نقل ممنوع ہے۔
 ### 🎯 넘즐 시리즈 / Numzzle Series
 넘즐(Numzzle) 은 넘버(Number) 와 퍼즐(Puzzle) 을 결합한 이름입니다.  
 Numzzle = Number + Puzzle  
