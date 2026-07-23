@@ -20,7 +20,48 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=no" />
-<title>넘즐초엑스 - 연산 게임 | 수수랜드</title>
+<title>넘즐엑스 초 - 쉬운 연산 게임 | 수수랜드</title>
+  <!-- SEO Meta Tags -->
+    <meta name="description" content="컴퓨터와 연산 대결,덧셈, 뺄셈을 재미있게 연습하는 초등 저학년 수학 게임 ">
+    <meta name="keywords" content="연산 게임, 수학 게임, 초등학생 수학, 저학년 초등수학, 두뇌게임, 치매예방">
+    <meta name="author" content="Soosooland">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="넘즐엑스 초 - 쉬운 연산 게임">
+    <meta property="og:description" content="덧셈, 뺄셈을 재미있게 연습하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://soosooland.com/numzzlex/numzzlexcho-en.html">
+    <meta property="og:image" content="https://soosooland.com/images/numzzle.jpeg">
+    <meta property="og:site_name" content="Soosooland">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="og:locale:alternate" content="en_US">
+  
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://soosooland.com/numzzlex/numzzlexcho-ko.html">
+<link rel="alternate" hreflang="ko" href="https://soosooland.com/numzzlex/numzzlexcho-ko.html">
+<link rel="alternate" hreflang="en" href="https://soosooland.com/numzzlex/numzzlexcho-en.html">
+    <link rel="stylesheet" href="https://soosooland.com/css/protection.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoGame",
+  "name": "NumzzleX Cho",
+  "description": "Math duel against the computer! Addition and subtraction for young students.",
+  "url": "https://soosooland.com/numzzlex/numzzlexcho-ko.html",
+  "genre": ["math", "puzzle"],
+  "gamePlatform": "Web browser",
+  "playMode": ["SinglePlayer"],
+  "inLanguage": ["ko"],
+  "isPartOf": {
+    "@type": "VideoGameSeries",
+    "name": "NumzzleX",
+    "url": "https://soosooland.com/numzzlex/"
+  }
+}
+</script>
+    <script src="https://soosooland.com/js/protection.js"></script>
+
+
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
     @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
@@ -54,6 +95,25 @@ body {
 .chalk-text {
     color: #f0f8ff;
     font-family: 'Pretendard', sans-serif;
+}
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 8px 10px;      /* 모바일 기본 */
+    font-size: 2em;
+    font-weight: bold;
+    background-color: #145454;
+    color: #5cd6d6;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+.back-button:hover {
+    background-color: #1baf8f;
+    color: #fff;
 }
 
 .main-title {
@@ -359,6 +419,12 @@ body {
     flex: 1;
     
 }
+footer {
+text-align: center;
+color: #c3dbdb;
+font-size: 0.8rem;
+margin-top: 30px;
+}
 
    @media (max-width: 600px) {
     .blackboard {
@@ -440,7 +506,8 @@ body {
 <body>
     <div class="blackboard">
         <div id="startScreen">
-            <h1 class="chalk-text main-title">넘즐초엑스</h1>
+        <button class="back-button"  onclick="location.href='https://soosooland.com/numzzlex/index.html'">←</button>    
+    <h1 class="chalk-text main-title">넘즐엑스 초</h1>
         <br><br><br>
         <div class="game-menu">
             <div class="target-input-container">
@@ -465,7 +532,7 @@ body {
     <div id="gameScreen" class="hidden">
         <div class="game-container">
             <div class="game-header">
-                <h1>넘즐초엑스</h1>
+                <h1>넘즐엑스 초</h1>
       <p>🎯 모드: <span id="modeDisplay" class="font-bold"></span></p>
             </div>
 
@@ -545,7 +612,11 @@ body {
     </div>
         </div>
     </div>
+
 </div>
+<footer>
+  <p>© 2025 Han Soosoo. All rights reserved.</p>
+</footer>
 
 <script>
     
