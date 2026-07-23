@@ -544,7 +544,7 @@ margin-top: 30px;
                     <p id="playerScore">0</p>
                 </div>
                 <div class="score-card computer">
-                    <h3 id="computerScoreTitle">NPC</h3>
+                    <h3 id="computerScoreTitle">Computer</h3>
                     <p id="computerScore">0</p>
                 </div>
             </div>
@@ -582,13 +582,13 @@ margin-top: 30px;
             <!-- 컴퓨터 영역 -->
             <div class="player-section computer-section">
                 <div class="cards-section">
-                    <h3 id="computerCardsTitle">NPC's Cards:</h3>
+                    <h3 id="computerCardsTitle">Computer's Cards:</h3>
                     <div id="computerCardsArea" class="cards-area"></div>
                 </div>
 
                 <div class="cards-section">
                   <div id="computerExpression" class="expression-area">
-                        NPC is thinking.....
+                        Computer is thinking.....
                     </div>
                 </div>
             </div>
@@ -597,7 +597,7 @@ margin-top: 30px;
                 <h2>Game Over!</h2>
                 <p>Final Score</p>
                 <p><span id="finalPlayerName">Player</span>: <span id="finalPlayerScore"></span>points</p>
-                <p><span id="finalComputerName">NPC</span>: <span id="finalComputerScore"></span>points</p>
+                <p><span id="finalComputerName">Computer</span>: <span id="finalComputerScore"></span>points</p>
             </div>
 
         <div class="bottom-buttons">
@@ -610,10 +610,10 @@ margin-top: 30px;
     </div>
         </div>
     </div>
+</div>
 <footer>
   <p>© 2025 Han Soosoo. All rights reserved.</p>
 </footer>
-</div>
 
 <script>
     
@@ -775,7 +775,7 @@ margin-top: 30px;
         renderCards();
         renderComputerCards();
         document.getElementById('playerExpression').textContent = 'Click Cards to create an equation.(You must use all the cards.)';
-        document.getElementById('computerExpression').textContent = 'NPC is thinking.....';
+        document.getElementById('computerExpression').textContent = 'Computer is thinking.....';
 
         document.getElementById('startScreen').classList.add('hidden');
         document.getElementById('gameScreen').classList.remove('hidden');
@@ -964,7 +964,6 @@ margin-top: 30px;
 
   window.saveScoreAndShowPercentile = saveScoreAndShowPercentile;
 </script>
-
     
 </body>
 </html>
