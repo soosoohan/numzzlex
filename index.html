@@ -89,8 +89,9 @@
         font-family: 'Pretendard', sans-serif;
     }
 .header {
-    position: relative;
-    text-align: center;
+    display: flex;
+    justify-content: center;    
+    margin: 0 auto;
 }
 
     /* 넘즐 메인 화면 */
@@ -384,13 +385,13 @@ margin-top: 30px;
 
  <button class="back-button" onclick="location.href='https://soosooland.com/'" aria-label="수수랜드 홈으로">
 <img src="https://soosooland.com/images/home.png" alt="수수랜드 홈"></button>
-
-        <div class="header">
-            <div class="language-toggle">
+       <div class="language-toggle">
                 <button class="language-button active" onclick="toggleLanguage('ko')">한국어</button>
                 <button class="language-button" onclick="toggleLanguage('en')">English</button>
             </div>
-   <h1 class="main-title">
+ 
+        <div class="header">
+       <h1 class="main-title">
         <img src="https://soosooland.com/numzzlex/banner.jpeg" alt="Numzzlex 넘즐X">
     </h1> </div>
         <div class="numzzle-main" id="numzzle-main">
